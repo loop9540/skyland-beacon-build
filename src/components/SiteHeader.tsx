@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
+import logoAsset from "@/assets/skyland-logo.png.asset.json";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,16 +30,14 @@ export function SiteHeader() {
       ].join(" ")}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="group flex items-center gap-3">
-          <Logo className="h-9 w-9 text-forest transition-transform duration-500 group-hover:rotate-[8deg]" />
-          <div className="leading-tight">
-            <div className="font-display font-semibold text-[1.05rem] text-foreground tracking-tight">
-              Skyland Ranch
-            </div>
-            <div className="text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-              Est. {SITE.established}
-            </div>
-          </div>
+        <Link to="/" className="group flex items-center" aria-label="Skyland Ranch home">
+          <img
+            src={logoAsset.url}
+            alt="Skyland Ranch — men's drug and alcohol therapeutic residence program"
+            className="h-10 md:h-12 w-auto transition-transform duration-500 group-hover:-translate-y-0.5"
+            width={300}
+            height={120}
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -99,22 +98,5 @@ export function SiteHeader() {
         </div>
       )}
     </header>
-  );
-}
-
-function Logo({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden>
-      <circle cx="20" cy="20" r="19" stroke="currentColor" strokeWidth="1.2" opacity="0.4" />
-      <path
-        d="M6 28 L14 18 L20 22 L28 12 L34 28 Z"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-        fill="currentColor"
-        fillOpacity="0.12"
-      />
-      <circle cx="28" cy="11" r="2" fill="currentColor" />
-    </svg>
   );
 }
