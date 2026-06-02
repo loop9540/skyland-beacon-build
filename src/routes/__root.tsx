@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "A working horse ranch in the Cascade foothills offering drug and alcohol-free recovery for men. Long-term sober living and equine therapy since 1986.",
       },
       { name: "author", content: "Skyland Ranch" },
-      { property: "og:title", content: "Skyland Ranch — There is hope." },
+      { property: "og:title", content: "Skyland Ranch — Sober Living for Men Near Seattle, WA" },
       {
         property: "og:description",
         content:
@@ -95,6 +95,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Skyland Ranch" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Skyland Ranch — Sober Living for Men Near Seattle, WA" },
+      { name: "description", content: "Skyland Ranch Sanctuary offers a drug and alcohol-free sober living environment for men." },
+      { property: "og:description", content: "Skyland Ranch Sanctuary offers a drug and alcohol-free sober living environment for men." },
+      { name: "twitter:description", content: "Skyland Ranch Sanctuary offers a drug and alcohol-free sober living environment for men." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d2ffa15a-fdb6-4121-bb3a-19e95c458240/id-preview-931612c9--e0696cc8-a85f-4c00-98ac-0e0bcc31350c.lovable.app-1780378102800.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d2ffa15a-fdb6-4121-bb3a-19e95c458240/id-preview-931612c9--e0696cc8-a85f-4c00-98ac-0e0bcc31350c.lovable.app-1780378102800.png" },
     ],
     links: [
       {
