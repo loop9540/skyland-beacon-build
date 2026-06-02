@@ -55,7 +55,7 @@ function Index() {
   return (
     <>
       {/* Hero */}
-      <section ref={heroRef} className="relative h-[100svh] min-h-[640px] overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
           <img
             src={heroImg}
@@ -68,7 +68,7 @@ function Index() {
           <div className="absolute inset-0 bg-gradient-to-b from-forest/40 via-forest/20 to-mist" />
         </motion.div>
 
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-20 lg:px-10 lg:pb-28">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-6 pt-28 pb-24 lg:px-10 lg:pt-32 lg:pb-28">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,18 +104,18 @@ function Index() {
             <button
               type="button"
               onClick={() => setVideoOpen(true)}
-              className="group relative mt-8 overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full max-w-xl"
+              className="group relative mt-8 overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full max-w-md"
             >
               <img
                 src="https://img.youtube.com/vi/13ERTGWCvH4/maxresdefault.jpg"
                 alt="Watch the Skyland Ranch film"
                 className="h-auto w-full object-cover aspect-video"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-forest/25 group-hover:bg-forest/35 transition-colors gap-3">
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-mist/95 text-forest shadow-lift group-hover:scale-110 transition-transform">
-                  <Play className="h-7 w-7 fill-current ml-1" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-forest/25 group-hover:bg-forest/35 transition-colors gap-2">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-mist/95 text-forest shadow-lift group-hover:scale-110 transition-transform">
+                  <Play className="h-6 w-6 fill-current ml-1" />
                 </span>
-                <span className="text-mist font-medium text-lg drop-shadow-md">Watch the film</span>
+                <span className="text-mist font-medium drop-shadow-md">Watch the film</span>
               </div>
             </button>
           </motion.div>
