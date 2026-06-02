@@ -63,7 +63,6 @@ function Index() {
             poster={heroImg}
             autoPlay
             muted
-            loop
             playsInline
             preload="auto"
             className="h-full w-full object-cover"
