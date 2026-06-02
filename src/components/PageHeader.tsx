@@ -16,11 +16,11 @@ export function PageHeader({ eyebrow, title, intro, image, imageAlt, light, bott
   return (
     <section className="relative pt-32 md:pt-40 pb-20 md:pb-28 overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <img src={image} alt={imageAlt} className="h-full w-full object-cover animate-ken-burns" loading="eager" />
+        {image && <img src={image} alt={imageAlt || ""} className="h-full w-full object-cover animate-ken-burns" loading="eager" />}
         {light ? (
-          <div className="absolute inset-0 bg-mist/80" />
+          <div className={`absolute inset-0 ${image ? "bg-mist/80" : "bg-mist"}`} />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-b from-forest/90 via-forest/80 to-forest/70" />
+          <div className={`absolute inset-0 ${image ? "bg-gradient-to-b from-forest/90 via-forest/80 to-forest/70" : "bg-forest"}`} />
         )}
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12 md:pt-20">
