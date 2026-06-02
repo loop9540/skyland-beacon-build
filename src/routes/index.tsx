@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import { ArrowRight, Phone, Mountain, HeartHandshake, Sun, Quote } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { ArrowRight, Phone, Mountain, HeartHandshake, Sun, Quote, Play, X } from "lucide-react";
 import heroImg from "@/assets/hero-ranch.jpg";
 import horseImg from "@/assets/horse-portrait.jpg";
 import barnImg from "@/assets/barn-dawn.jpg";
@@ -38,6 +38,19 @@ function Index() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setVideoOpen(false);
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [videoOpen]);
 
   return (
     <>
@@ -80,6 +93,16 @@ function Index() {
                 Call {SITE.phone}
                 <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
               </a>
+              <button
+                type="button"
+                onClick={() => setVideoOpen(true)}
+                className="group inline-flex items-center gap-3 rounded-full bg-mist/10 backdrop-blur-sm border border-mist/40 text-mist px-6 py-4 text-base hover:bg-mist/20 transition-colors"
+              >
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-mist text-forest">
+                  <Play className="h-3.5 w-3.5 fill-current" />
+                </span>
+                Watch the film
+              </button>
               <Link
                 to="/program"
                 className="inline-flex items-center gap-2 rounded-full border border-mist/40 text-mist px-6 py-4 text-base hover:bg-mist/10 transition-colors"
@@ -100,6 +123,38 @@ function Index() {
           <div className="h-10 w-px bg-mist/40 animate-drift" />
         </motion.div>
       </section>
+
+      {/* Video lightbox */}
+      {videoOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-forest/95 backdrop-blur-sm p-4 md:p-8"
+          onClick={() => setVideoOpen(false)}
+        >
+          <button
+            type="button"
+            aria-label="Close video"
+            onClick={() => setVideoOpen(false)}
+            className="absolute top-5 right-5 md:top-8 md:right-8 flex h-11 w-11 items-center justify-center rounded-full bg-mist/10 border border-mist/30 text-mist hover:bg-mist/20 transition-colors"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <div
+            className="relative w-full max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-lift"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              src="https://www.youtube.com/embed/13ERTGWCvH4?autoplay=1&rel=0"
+              title="Skyland Ranch — film"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full border-0"
+            />
+          </div>
+        </motion.div>
+      )}
 
       {/* Quote */}
       <section className="relative bg-mist py-24 md:py-32">
