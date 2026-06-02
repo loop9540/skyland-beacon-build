@@ -10,33 +10,33 @@ import img5089 from "@/assets/housing-5089.jpg.asset.json";
 import img5099 from "@/assets/housing-5099.jpg.asset.json";
 import img5102 from "@/assets/housing-5102.jpg.asset.json";
 
-export const Route = createFileRoute("/housing")({
+export const Route = createFileRoute("/residence")({
   head: () => ({
     meta: [
-      { title: "Housing — The Lodge at Skyland Ranch | Sober Living for Men" },
+      { title: "Residence — The Lodge at Skyland Ranch | Sober Living for Men" },
       {
         name: "description",
         content:
           "A warm cedar lodge above the river. Shared bedrooms, a long family table, a wood stove, and quiet land — the home where men in recovery live the program at Skyland Ranch.",
       },
-      { property: "og:title", content: "Housing at Skyland Ranch" },
+      { property: "og:title", content: "Residence at Skyland Ranch" },
       {
         property: "og:description",
         content: "A cedar lodge on the river — the home where men live the program.",
       },
-      { property: "og:url", content: "/housing" },
+      { property: "og:url", content: "/residence" },
       { property: "og:image", content: img5089.url },
     ],
-    links: [{ rel: "canonical", href: "/housing" }],
+    links: [{ rel: "canonical", href: "/residence" }],
   }),
-  component: HousingPage,
+  component: ResidencePage,
 });
 
-function HousingPage() {
+function ResidencePage() {
   return (
     <>
       <PageHeader
-        eyebrow="Housing"
+        eyebrow="Residence"
         title={<>A cedar lodge.<br /> A river below.</>}
         intro="Our residents live together in a warm wood-beamed lodge above the Skykomish River — shared bedrooms, a long family table, a wood stove, and a porch that opens onto the pasture."
         image={img5089.url}
