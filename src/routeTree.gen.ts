@@ -10,8 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ResidenceRouteImport } from './routes/residence'
 import { Route as ProgramRouteImport } from './routes/program'
-import { Route as HousingRouteImport } from './routes/housing'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AboutRouteImport } from './routes/about'
@@ -22,14 +22,14 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResidenceRoute = ResidenceRouteImport.update({
+  id: '/residence',
+  path: '/residence',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramRoute = ProgramRouteImport.update({
   id: '/program',
   path: '/program',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HousingRoute = HousingRouteImport.update({
-  id: '/housing',
-  path: '/housing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -58,8 +58,8 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admissions': typeof AdmissionsRoute
   '/contact': typeof ContactRoute
-  '/housing': typeof HousingRoute
   '/program': typeof ProgramRoute
+  '/residence': typeof ResidenceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
@@ -67,8 +67,8 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/admissions': typeof AdmissionsRoute
   '/contact': typeof ContactRoute
-  '/housing': typeof HousingRoute
   '/program': typeof ProgramRoute
+  '/residence': typeof ResidenceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
@@ -77,8 +77,8 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admissions': typeof AdmissionsRoute
   '/contact': typeof ContactRoute
-  '/housing': typeof HousingRoute
   '/program': typeof ProgramRoute
+  '/residence': typeof ResidenceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -88,8 +88,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/admissions'
     | '/contact'
-    | '/housing'
     | '/program'
+    | '/residence'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -97,8 +97,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/admissions'
     | '/contact'
-    | '/housing'
     | '/program'
+    | '/residence'
     | '/sitemap.xml'
   id:
     | '__root__'
@@ -106,8 +106,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/admissions'
     | '/contact'
-    | '/housing'
     | '/program'
+    | '/residence'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
@@ -116,8 +116,8 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdmissionsRoute: typeof AdmissionsRoute
   ContactRoute: typeof ContactRoute
-  HousingRoute: typeof HousingRoute
   ProgramRoute: typeof ProgramRoute
+  ResidenceRoute: typeof ResidenceRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -130,18 +130,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/residence': {
+      id: '/residence'
+      path: '/residence'
+      fullPath: '/residence'
+      preLoaderRoute: typeof ResidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/program': {
       id: '/program'
       path: '/program'
       fullPath: '/program'
       preLoaderRoute: typeof ProgramRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/housing': {
-      id: '/housing'
-      path: '/housing'
-      fullPath: '/housing'
-      preLoaderRoute: typeof HousingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -180,8 +180,8 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdmissionsRoute: AdmissionsRoute,
   ContactRoute: ContactRoute,
-  HousingRoute: HousingRoute,
   ProgramRoute: ProgramRoute,
+  ResidenceRoute: ResidenceRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
