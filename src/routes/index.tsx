@@ -76,7 +76,7 @@ function Index() {
             className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12"
           >
             <div>
-              <div className="eyebrow text-sage drop-shadow-sm">Sober living for men · Est. 1986</div>
+              <div className="eyebrow text-sage drop-shadow-sm">A 501(c)(3) nonprofit</div>
               <h1 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.02] text-mist text-balance">
                 There is <em className="not-italic font-normal text-dawn">hope</em> —<br />
                 and a quiet place<br />to begin again.
