@@ -4,6 +4,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Phone, Sunrise, Hammer, Users, Leaf, Moon } from "lucide-react";
 import equineImg from "@/assets/equine-therapy.jpg";
 import horseImg from "@/assets/horse-portrait.jpg";
+import trailImg from "@/assets/forest-trail.jpg";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/program")({
@@ -34,6 +35,9 @@ function ProgramPage() {
         intro="Recovery here is built into the texture of an ordinary day — feeding horses at dawn, working the land, sharing a meal, walking the trails. The program is the rhythm of the place itself."
         image={equineImg}
         imageAlt="Hands gently brushing a horse's mane in soft natural light"
+        light
+        bottomImage={trailImg}
+        bottomImageAlt="A misty forest trail at sunrise on the ranch"
       />
 
       <section className="py-24 md:py-32">

@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import horseImg from "@/assets/horse-portrait.jpg";
+import heroImg from "@/assets/hero-ranch.jpg";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
@@ -33,6 +34,9 @@ function ContactPage() {
         intro="The fastest way to talk about whether Skyland Ranch is right for you — or for someone you love — is a phone call. No forms, no automated systems."
         image={horseImg}
         imageAlt="A horse standing in a misty pasture"
+        light
+        bottomImage={heroImg}
+        bottomImageAlt="The ranch at golden hour with horses grazing"
       />
 
       <section className="py-24 md:py-32">
