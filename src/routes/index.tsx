@@ -104,7 +104,7 @@ function Index() {
             <button
               type="button"
               onClick={() => setVideoOpen(true)}
-              className="group relative mt-8 overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full max-w-2xl"
+              className="group relative mt-8 overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full max-w-xl"
             >
               <img
                 src="https://img.youtube.com/vi/13ERTGWCvH4/maxresdefault.jpg"
