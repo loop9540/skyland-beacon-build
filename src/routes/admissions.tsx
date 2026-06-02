@@ -42,7 +42,7 @@ function AdmissionsPage() {
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal>
-            <div className="eyebrow">How it works</div>
+            <div className="eyebrow text-moss">How it works</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight text-balance">
               Three steps. No paperwork to begin.
             </h2>
@@ -64,7 +64,7 @@ function AdmissionsPage() {
       <section className="bg-secondary/40 border-y border-border/60 py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6 grid gap-12 md:grid-cols-2">
           <Reveal>
-            <div className="eyebrow">Who we serve</div>
+            <div className="eyebrow text-moss">Who we serve</div>
             <h2 className="mt-4 font-display text-3xl md:text-4xl leading-tight text-balance">
               The ranch is a good fit for a man who:
             </h2>
@@ -87,7 +87,7 @@ function AdmissionsPage() {
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <Reveal>
-            <div className="eyebrow">Ready when you are</div>
+            <div className="eyebrow text-moss">Ready when you are</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight text-balance">
               Make the call.<br />We'll take it from there.
             </h2>

@@ -183,7 +183,7 @@ function Index() {
       <section className="relative py-24 md:py-36">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid gap-16 md:grid-cols-12 md:gap-20 items-center">
           <Reveal className="md:col-span-5">
-            <div className="eyebrow">Our mission</div>
+            <div className="eyebrow text-moss">Our mission</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-[1.05] text-balance">
               Male drug and alcohol addiction recovery — with dignity.
             </h2>
@@ -212,7 +212,7 @@ function Index() {
       <section className="relative bg-secondary/40 py-24 md:py-32 border-y border-border/60">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <div className="eyebrow">What sets the ranch apart</div>
+            <div className="eyebrow text-moss">What sets the ranch apart</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-[1.05] max-w-2xl text-balance">
               Three things that change a man's life here.
             </h2>

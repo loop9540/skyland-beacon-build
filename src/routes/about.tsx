@@ -42,7 +42,7 @@ function AboutPage() {
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-4xl px-6 space-y-12 text-lg text-foreground/85 text-pretty">
           <Reveal>
-            <div className="eyebrow">Our story</div>
+            <div className="eyebrow text-moss">Our story</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl text-foreground leading-tight text-balance">
               {SITE.yearsOfService} years of helping men come home to themselves.
             </h2>
@@ -75,7 +75,7 @@ function AboutPage() {
       <section className="bg-secondary/40 border-y border-border/60 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <div className="eyebrow">What we believe</div>
+            <div className="eyebrow text-moss">What we believe</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight max-w-2xl text-balance">
               The values that shape every day on the ranch.
             </h2>

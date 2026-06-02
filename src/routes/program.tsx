@@ -43,7 +43,7 @@ function ProgramPage() {
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <div className="eyebrow">A day in the life</div>
+            <div className="eyebrow text-moss">A day in the life</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight max-w-2xl text-balance">
               The structure that holds a man together while he changes.
             </h2>
@@ -92,7 +92,7 @@ function ProgramPage() {
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-4xl px-6">
           <Reveal>
-            <div className="eyebrow">Length of stay</div>
+            <div className="eyebrow text-moss">Length of stay</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight text-balance">
               Short or long term. Whatever the work asks for.
             </h2>
