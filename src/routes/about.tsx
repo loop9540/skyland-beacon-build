@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import barnImg from "@/assets/barn-dawn.jpg";
+import heroImg from "@/assets/hero-ranch.jpg";
 import trailImg from "@/assets/forest-trail.jpg";
 import { SITE } from "@/lib/site";
 
