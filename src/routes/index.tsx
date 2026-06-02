@@ -73,38 +73,40 @@ function Index() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            className="max-w-3xl"
+            className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12"
           >
-            <div className="eyebrow text-sage drop-shadow-sm">Sober living for men · Est. 1986</div>
-            <h1 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.02] text-mist text-balance">
-              There is <em className="not-italic font-normal text-dawn">hope</em> —<br />
-              and a quiet place<br />to begin again.
-            </h1>
-            <p className="mt-7 max-w-xl text-lg text-mist/90 text-pretty">
-              A working horse ranch in the Cascade foothills, 45 minutes from Seattle, where men
-              recover their footing through honest work, mutual respect, and the steady company of horses.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a
-                href={SITE.phoneHref}
-                className="group inline-flex items-center gap-3 rounded-full bg-dawn text-accent-foreground px-7 py-4 text-base font-medium shadow-lift hover:-translate-y-0.5 transition-transform"
-              >
-                <Phone className="h-4 w-4" />
-                Call {SITE.phone}
-                <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
-              </a>
-              <Link
-                to="/program"
-                className="inline-flex items-center gap-2 rounded-full border border-mist/40 text-mist px-6 py-4 text-base hover:bg-mist/10 transition-colors"
-              >
-                Explore the program
-              </Link>
+            <div>
+              <div className="eyebrow text-sage drop-shadow-sm">Sober living for men · Est. 1986</div>
+              <h1 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.02] text-mist text-balance">
+                There is <em className="not-italic font-normal text-dawn">hope</em> —<br />
+                and a quiet place<br />to begin again.
+              </h1>
+              <p className="mt-7 max-w-xl text-lg text-mist/90 text-pretty">
+                A working horse ranch in the Cascade foothills, 45 minutes from Seattle, where men
+                recover their footing through honest work, mutual respect, and the steady company of horses.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a
+                  href={SITE.phoneHref}
+                  className="group inline-flex items-center gap-3 rounded-full bg-dawn text-accent-foreground px-7 py-4 text-base font-medium shadow-lift hover:-translate-y-0.5 transition-transform"
+                >
+                  <Phone className="h-4 w-4" />
+                  Call {SITE.phone}
+                  <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                </a>
+                <Link
+                  to="/program"
+                  className="inline-flex items-center gap-2 rounded-full border border-mist/40 text-mist px-6 py-4 text-base hover:bg-mist/10 transition-colors"
+                >
+                  Explore the program
+                </Link>
+              </div>
             </div>
 
             <button
               type="button"
               onClick={() => setVideoOpen(true)}
-              className="group relative mt-8 overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full max-w-md"
+              className="group relative overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full"
             >
               <img
                 src="https://img.youtube.com/vi/13ERTGWCvH4/maxresdefault.jpg"
