@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
-import logoAsset from "@/assets/skyland-logo.png.asset.json";
 
 export function SiteFooter() {
   return (
