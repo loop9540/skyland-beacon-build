@@ -14,7 +14,7 @@ export function PageHeader({ eyebrow, title, intro, image, imageAlt }: Props) {
     <section className="relative pt-32 md:pt-40 pb-20 md:pb-28 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <img src={image} alt={imageAlt} className="h-full w-full object-cover animate-ken-burns" loading="eager" />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest/70 via-forest/40 to-mist" />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest/85 via-forest/70 to-forest/55" />
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12 md:pt-20">
         <Reveal>
