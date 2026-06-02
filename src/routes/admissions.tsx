@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Phone, Check } from "lucide-react";
 import trailImg from "@/assets/forest-trail.jpg";
+import barnImg from "@/assets/barn-dawn.jpg";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/admissions")({
@@ -33,6 +34,9 @@ function AdmissionsPage() {
         intro="There's no form to fill out before you can talk to a real person. Pick up the phone, and we'll walk through it together — honestly, confidentially, with no pressure."
         image={trailImg}
         imageAlt="A misty trail through tall evergreen trees at sunrise"
+        light
+        bottomImage={barnImg}
+        bottomImageAlt="A weathered barn at dawn on the ranch"
       />
 
       <section className="py-24 md:py-32">

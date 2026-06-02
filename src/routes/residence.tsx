@@ -41,6 +41,9 @@ function ResidencePage() {
         intro="Our residents live together in a warm wood-beamed lodge above the Skykomish River — shared bedrooms, a long family table, a wood stove, and a porch that opens onto the pasture."
         image={img5089.url}
         imageAlt="The main lodge living room at Skyland Ranch, with vaulted cedar ceilings and a wall of windows overlooking the forest"
+        light
+        bottomImage={img5074.url}
+        bottomImageAlt="The Skykomish River winding past the property"
       />
 
       <section className="py-24 md:py-32">
