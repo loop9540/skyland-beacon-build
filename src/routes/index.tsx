@@ -281,7 +281,7 @@ const PILLARS = [
 ];
 
 const STATS = [
-  { value: "38+", label: "Years helping men reclaim their lives" },
+  { value: `${SITE.yearsOfService}+`, label: "Years helping men reclaim their lives" },
   { value: "100s", label: "Of residents supported through sustained recovery" },
   { value: "45 min", label: "From downtown Seattle to a different kind of quiet" },
 ];
