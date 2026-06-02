@@ -4,7 +4,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Phone, Sunrise, Hammer, Users, Leaf, Moon } from "lucide-react";
 import equineImg from "@/assets/equine-therapy.jpg";
 import horseImg from "@/assets/horse-portrait.jpg";
-import trailImg from "@/assets/horseback-arena.jpg.asset.json";
+import trailImg from "@/assets/horseback-arena-v2.jpg.asset.json";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/program")({
