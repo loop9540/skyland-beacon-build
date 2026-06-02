@@ -93,22 +93,6 @@ function Index() {
                 Call {SITE.phone}
                 <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
               </a>
-              <button
-                type="button"
-                onClick={() => setVideoOpen(true)}
-                className="group relative overflow-hidden rounded-2xl border border-mist/30 shadow-lift hover:shadow-xl transition-all hover:-translate-y-0.5"
-              >
-                <img
-                  src="https://img.youtube.com/vi/13ERTGWCvH4/maxresdefault.jpg"
-                  alt="Watch the Skyland Ranch film"
-                  className="h-28 w-auto object-cover"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-forest/20 group-hover:bg-forest/30 transition-colors">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-mist/90 text-forest shadow-lift group-hover:scale-110 transition-transform">
-                    <Play className="h-5 w-5 fill-current ml-0.5" />
-                  </span>
-                </div>
-              </button>
               <Link
                 to="/program"
                 className="inline-flex items-center gap-2 rounded-full border border-mist/40 text-mist px-6 py-4 text-base hover:bg-mist/10 transition-colors"
@@ -116,6 +100,24 @@ function Index() {
                 Explore the program
               </Link>
             </div>
+
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
+              className="group relative mt-8 overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full max-w-2xl"
+            >
+              <img
+                src="https://img.youtube.com/vi/13ERTGWCvH4/maxresdefault.jpg"
+                alt="Watch the Skyland Ranch film"
+                className="h-auto w-full object-cover aspect-video"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-forest/25 group-hover:bg-forest/35 transition-colors gap-3">
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-mist/95 text-forest shadow-lift group-hover:scale-110 transition-transform">
+                  <Play className="h-7 w-7 fill-current ml-1" />
+                </span>
+                <span className="text-mist font-medium text-lg drop-shadow-md">Watch the film</span>
+              </div>
+            </button>
           </motion.div>
         </div>
 
