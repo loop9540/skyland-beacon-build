@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { ArrowRight, Phone, Mountain, HeartHandshake, Sun, Quote, Play, X } from "lucide-react";
 import heroImg from "@/assets/hero-ranch.jpg";
+import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import horseImg from "@/assets/horse-portrait.jpg";
 import barnImg from "@/assets/barn-dawn-v3.jpg.asset.json";
 import equineImg from "@/assets/equine-therapy.jpg";
@@ -57,13 +58,15 @@ function Index() {
       {/* Hero */}
       <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
-          <img
-            src={heroImg}
-            alt="Sunrise over Skyland Ranch pastures with the Cascade foothills in the distance"
-            className="h-full w-full object-cover animate-ken-burns"
-            width={1920}
-            height={1080}
-            fetchPriority="high"
+          <video
+            src={heroVideo.url}
+            poster={heroImg}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-forest/40 via-forest/20 to-mist" />
         </motion.div>
