@@ -12,7 +12,7 @@ export function SiteFooter() {
             <img
               src={logoAsset.url}
               alt="Skyland Ranch"
-              className="h-14 w-auto mb-6 invert brightness-0"
+              className="h-14 w-auto mb-6"
               width={300}
               height={120}
             />
