@@ -29,7 +29,7 @@ export function SiteHeader() {
           : "bg-transparent",
       ].join(" ")}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-16 md:h-20">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20 md:h-24">
         <Link to="/" className="group flex items-center" aria-label="Skyland Ranch home">
           <img
             src={logoAsset.url}
