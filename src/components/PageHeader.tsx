@@ -8,9 +8,11 @@ interface Props {
   image: string;
   imageAlt: string;
   light?: boolean;
+  bottomImage?: string;
+  bottomImageAlt?: string;
 }
 
-export function PageHeader({ eyebrow, title, intro, image, imageAlt, light }: Props) {
+export function PageHeader({ eyebrow, title, intro, image, imageAlt, light, bottomImage, bottomImageAlt }: Props) {
   return (
     <section className="relative pt-32 md:pt-40 pb-20 md:pb-28 overflow-hidden">
       <div className="absolute inset-0 -z-10">
@@ -31,6 +33,13 @@ export function PageHeader({ eyebrow, title, intro, image, imageAlt, light }: Pr
             <p className={`mt-6 max-w-2xl text-lg text-pretty ${light ? "text-forest/90" : "text-white/90"}`}>{intro}</p>
           )}
         </Reveal>
+        {bottomImage && (
+          <Reveal delay={0.15}>
+            <div className="mt-10 md:mt-14 rounded-2xl overflow-hidden shadow-lift">
+              <img src={bottomImage} alt={bottomImageAlt || ""} className="w-full h-auto object-cover" loading="eager" />
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

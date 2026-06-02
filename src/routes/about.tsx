@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import barnImg from "@/assets/barn-dawn.jpg";
+import heroImg from "@/assets/hero-ranch.jpg";
 import trailImg from "@/assets/forest-trail.jpg";
 import { SITE } from "@/lib/site";
 
@@ -34,6 +35,8 @@ function AboutPage() {
         image={barnImg}
         imageAlt="A weathered barn at dawn on the ranch"
         light
+        bottomImage={heroImg}
+        bottomImageAlt="The ranch at golden hour with horses grazing"
       />
 
       <section className="py-24 md:py-32">
