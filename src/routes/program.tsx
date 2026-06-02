@@ -49,6 +49,9 @@ function ProgramPage() {
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight max-w-2xl text-balance">
               The structure that holds a man together while he changes.
             </h2>
+            <div className="mt-8 overflow-hidden rounded-2xl aspect-[16/9] max-w-4xl">
+              <img src={arenaAsset.url} alt="Residents riding horseback in the arena with mountain views" loading="lazy" className="h-full w-full object-cover" />
+            </div>
           </Reveal>
           <Stagger className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {DAY.map((d) => (
