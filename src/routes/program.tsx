@@ -5,7 +5,7 @@ import { Phone, Sunrise, Hammer, Users, Leaf, Moon } from "lucide-react";
 import equineAsset from "@/assets/equine-saddle.png.asset.json";
 const equineImg = equineAsset.url;
 import horseImg from "@/assets/horse-portrait.jpg";
-import trailImg from "@/assets/horseback-arena-v2.jpg.asset.json";
+import trailImg from "@/assets/equine-saddle.png.asset.json";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/program")({
