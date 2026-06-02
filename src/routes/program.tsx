@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Phone, Sunrise, Hammer, Users, Leaf, Moon } from "lucide-react";
-import equineAsset from "@/assets/river-valley.jpg.asset.json";
+import equineAsset from "@/assets/equine-saddle.png.asset.json";
 const equineImg = equineAsset.url;
 import horseImg from "@/assets/horse-portrait.jpg";
 import trailImg from "@/assets/horseback-arena-v2.jpg.asset.json";
