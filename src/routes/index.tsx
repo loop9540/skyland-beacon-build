@@ -96,12 +96,18 @@ function Index() {
               <button
                 type="button"
                 onClick={() => setVideoOpen(true)}
-                className="group inline-flex items-center gap-3 rounded-full bg-mist/10 backdrop-blur-sm border border-mist/40 text-mist px-6 py-4 text-base hover:bg-mist/20 transition-colors"
+                className="group relative overflow-hidden rounded-2xl border border-mist/30 shadow-lift hover:shadow-xl transition-all hover:-translate-y-0.5"
               >
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-mist text-forest">
-                  <Play className="h-3.5 w-3.5 fill-current" />
-                </span>
-                Watch the film
+                <img
+                  src="https://img.youtube.com/vi/13ERTGWCvH4/maxresdefault.jpg"
+                  alt="Watch the Skyland Ranch film"
+                  className="h-28 w-auto object-cover"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-forest/20 group-hover:bg-forest/30 transition-colors">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-mist/90 text-forest shadow-lift group-hover:scale-110 transition-transform">
+                    <Play className="h-5 w-5 fill-current ml-0.5" />
+                  </span>
+                </div>
               </button>
               <Link
                 to="/program"
