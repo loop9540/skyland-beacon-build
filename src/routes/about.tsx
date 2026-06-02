@@ -33,6 +33,7 @@ function AboutPage() {
         intro="Skyland Ranch has been a quiet, honest home for men in recovery since 1986. Our story is shaped by the land, by horses, and by the men who chose to begin again here."
         image={barnImg}
         imageAlt="A weathered barn at dawn on the ranch"
+        light
       />
 
       <section className="py-24 md:py-32">
