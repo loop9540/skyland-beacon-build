@@ -8,13 +8,6 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-10">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <img
-              src={logoAsset.url}
-              alt="Skyland Ranch"
-              className="h-14 w-auto mb-6"
-              width={300}
-              height={120}
-            />
             <div className="eyebrow text-sage">{SITE.tagline}</div>
             <h2 className="mt-3 font-display text-3xl md:text-4xl text-balance leading-[1.1]">
               A quiet place to begin again.
