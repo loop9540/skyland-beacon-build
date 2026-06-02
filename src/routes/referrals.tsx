@@ -100,8 +100,8 @@ function ReferralsPage() {
         eyebrow="For Clinicians"
         title={<>Referrals for<br /> aftercare placement.</>}
         intro="If you're a clinician or case manager at a treatment center and you have a client whose next step is long-term sober living, we'd like to talk. The fastest way is a phone call — or use the form below and we'll be in touch the same day."
-        image={valleyAsset.url}
-        imageAlt="A green pasture at the ranch with the Cascade foothills rising behind"
+        image={undefined}
+        imageAlt={undefined}
         light
         bottomImage={barnImg.url}
         bottomImageAlt="A weathered barn at dawn on the ranch"

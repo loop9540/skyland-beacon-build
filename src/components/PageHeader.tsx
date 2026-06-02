@@ -5,8 +5,8 @@ interface Props {
   eyebrow: string;
   title: ReactNode;
   intro?: ReactNode;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
   light?: boolean;
   bottomImage?: string;
   bottomImageAlt?: string;
