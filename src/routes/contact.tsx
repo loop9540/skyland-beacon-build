@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Speak with Skyland Ranch about sober living for men near Seattle, WA. Call 360-793-2611 for a confidential conversation. Located in Sultan, Washington.",
+          "Speak with Skyland Ranch about sober living for men near Seattle, WA. Call 360-793-2611 for a confidential conversation. Located in Gold Bar, Washington.",
       },
       { property: "og:title", content: "Contact Skyland Ranch" },
       { property: "og:description", content: "Call 360-793-2611 to speak with us about sober living for men." },
