@@ -50,7 +50,7 @@ function ResidencePage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid gap-16 md:grid-cols-12 items-center">
             <Reveal className="md:col-span-6">
-              <div className="eyebrow">The lodge</div>
+              <div className="eyebrow text-moss">The lodge</div>
               <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight text-balance">
                 A home, not a facility.
               </h2>
@@ -106,7 +106,7 @@ function ResidencePage() {
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <div className="eyebrow">A look around</div>
+            <div className="eyebrow text-moss">A look around</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight text-balance max-w-2xl">
               Photographs from the lodge.
             </h2>
@@ -150,7 +150,7 @@ function ResidencePage() {
       <section className="pb-28">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <Reveal>
-            <div className="eyebrow">Come see it</div>
+            <div className="eyebrow text-moss">Come see it</div>
             <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight text-balance">
               The best way to know if Skyland is right is to call.
             </h2>

@@ -61,7 +61,7 @@ function ContactPage() {
 
           <Reveal delay={0.15}>
             <div className="rounded-2xl bg-card border border-border/60 p-10 shadow-soft">
-              <div className="eyebrow">Reach the ranch</div>
+              <div className="eyebrow text-moss">Reach the ranch</div>
               <ul className="mt-6 space-y-6">
                 <ContactRow Icon={Phone} label="Phone" value={SITE.phone} href={SITE.phoneHref} />
                 <ContactRow Icon={Mail} label="Email" value={SITE.email} href={`mailto:${SITE.email}`} />
