@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Phone, Check } from "lucide-react";
-import barnImg from "@/assets/barn-dawn-v2.jpg.asset.json";
+import barnImg from "@/assets/barn-dawn-v3.jpg.asset.json";
 import valleyAsset from "@/assets/admissions-valley.jpg.asset.json";
 import { SITE } from "@/lib/site";
 
