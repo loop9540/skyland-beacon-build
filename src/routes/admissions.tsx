@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Phone, Check } from "lucide-react";
-import trailImg from "@/assets/forest-trail.jpg";
 import barnImg from "@/assets/barn-dawn.jpg";
+import valleyAsset from "@/assets/admissions-valley.jpg.asset.json";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/admissions")({
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/admissions")({
       { property: "og:title", content: "Admissions — Skyland Ranch" },
       { property: "og:description", content: "Start a confidential conversation about coming to Skyland Ranch." },
       { property: "og:url", content: "/admissions" },
-      { property: "og:image", content: trailImg },
+      { property: "og:image", content: valleyAsset.url },
     ],
     links: [{ rel: "canonical", href: "/admissions" }],
   }),
@@ -32,8 +32,8 @@ function AdmissionsPage() {
         eyebrow="Admissions"
         title={<>The first call<br /> is the hardest one.</>}
         intro="There's no form to fill out before you can talk to a real person. Pick up the phone, and we'll walk through it together — honestly, confidentially, with no pressure."
-        image={trailImg}
-        imageAlt="A misty trail through tall evergreen trees at sunrise"
+        image={valleyAsset.url}
+        imageAlt="A green pasture at the ranch with the Cascade foothills rising behind"
         light
         bottomImage={barnImg}
         bottomImageAlt="A weathered barn at dawn on the ranch"
