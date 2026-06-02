@@ -35,7 +35,7 @@ function AdmissionsPage() {
         image={valleyAsset.url}
         imageAlt="A green pasture at the ranch with the Cascade foothills rising behind"
         light
-        bottomImage={barnImg}
+        bottomImage={barnImg.url}
         bottomImageAlt="A weathered barn at dawn on the ranch"
       />
 

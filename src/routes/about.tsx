@@ -18,7 +18,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Skyland Ranch" },
       { property: "og:description", content: "A working horse ranch helping men recover since 1986, near Seattle, WA." },
       { property: "og:url", content: "/about" },
-      { property: "og:image", content: barnImg },
+      { property: "og:image", content: barnImg.url },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
@@ -32,7 +32,7 @@ function AboutPage() {
         eyebrow="About the ranch"
         title={<>A working ranch.<br /> A patient kind of recovery.</>}
         intro="Skyland Ranch has been a quiet, honest home for men in recovery since 1986. Our story is shaped by the land, by horses, and by the men who chose to begin again here."
-        image={barnImg}
+        image={barnImg.url}
         imageAlt="A weathered barn at dawn on the ranch"
         light
         bottomImage={heroImg}

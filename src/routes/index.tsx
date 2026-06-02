@@ -248,7 +248,7 @@ function Index() {
           </Reveal>
           <Reveal delay={0.2} className="md:col-span-5">
             <div className="overflow-hidden rounded-2xl aspect-[4/3]">
-              <img src={barnImg} alt="A weathered barn at dawn" loading="lazy" className="h-full w-full object-cover hover:scale-105 transition-transform duration-[1600ms]" />
+              <img src={barnImg.url} alt="A weathered barn at dawn" loading="lazy" className="h-full w-full object-cover hover:scale-105 transition-transform duration-[1600ms]" />
             </div>
           </Reveal>
         </div>
