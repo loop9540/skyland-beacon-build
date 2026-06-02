@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { Phone, Check } from "lucide-react";
-import barnImg from "@/assets/barn-dawn.jpg";
+import barnImg from "@/assets/barn-dawn-v2.jpg.asset.json";
 import valleyAsset from "@/assets/admissions-valley.jpg.asset.json";
 import { SITE } from "@/lib/site";
 
@@ -35,7 +35,7 @@ function AdmissionsPage() {
         image={valleyAsset.url}
         imageAlt="A green pasture at the ranch with the Cascade foothills rising behind"
         light
-        bottomImage={barnImg}
+        bottomImage={barnImg.url}
         bottomImageAlt="A weathered barn at dawn on the ranch"
       />
 

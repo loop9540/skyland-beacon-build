@@ -5,7 +5,7 @@ import { useRef, useState, useEffect } from "react";
 import { ArrowRight, Phone, Mountain, HeartHandshake, Sun, Quote, Play, X } from "lucide-react";
 import heroImg from "@/assets/hero-ranch.jpg";
 import horseImg from "@/assets/horse-portrait.jpg";
-import barnImg from "@/assets/barn-dawn.jpg";
+import barnImg from "@/assets/barn-dawn-v2.jpg.asset.json";
 import equineImg from "@/assets/equine-therapy.jpg";
 import trailImg from "@/assets/forest-trail.jpg";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
@@ -248,7 +248,7 @@ function Index() {
           </Reveal>
           <Reveal delay={0.2} className="md:col-span-5">
             <div className="overflow-hidden rounded-2xl aspect-[4/3]">
-              <img src={barnImg} alt="A weathered barn at dawn" loading="lazy" className="h-full w-full object-cover hover:scale-105 transition-transform duration-[1600ms]" />
+              <img src={barnImg.url} alt="A weathered barn at dawn" loading="lazy" className="h-full w-full object-cover hover:scale-105 transition-transform duration-[1600ms]" />
             </div>
           </Reveal>
         </div>
