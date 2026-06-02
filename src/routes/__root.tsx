@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteHeader } from "../components/SiteHeader";
+import { SiteFooter } from "../components/SiteFooter";
 
 function NotFoundComponent() {
   return (
@@ -77,19 +79,48 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Skyland Ranch — Sober Living for Men Near Seattle, WA" },
+      {
+        name: "description",
+        content:
+          "A working horse ranch in the Cascade foothills offering drug and alcohol-free recovery for men. Long-term sober living and equine therapy since 1986.",
+      },
+      { name: "author", content: "Skyland Ranch" },
+      { property: "og:title", content: "Skyland Ranch — There is hope." },
+      {
+        property: "og:description",
+        content:
+          "Long-term sober living for men on a working horse ranch near Seattle, WA. Equine therapy, mutual respect, and a path back to a new way of living.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Skyland Ranch" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Skyland Ranch",
+          url: "/",
+          description:
+            "A drug and alcohol-free working horse ranch offering long-term sober living for men near Seattle, Washington.",
+          telephone: "+1-360-793-2611",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Sultan",
+            addressRegion: "WA",
+            addressCountry: "US",
+          },
+          foundingDate: "1986",
+        }),
       },
     ],
   }),
@@ -118,8 +149,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col bg-background">
+        <SiteHeader />
+        <main className="flex-1">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <SiteFooter />
+      </div>
     </QueryClientProvider>
   );
 }
