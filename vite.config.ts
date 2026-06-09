@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Outside a Lovable sandbox the config skips nitro by default, which produces a
+  // client-only build with no SSR server — Vercel then has nothing to route and
+  // serves 404 NOT_FOUND. Force nitro on and hard-pin the Vercel preset so the
+  // build emits a Vercel Build Output (.vercel/output) with the SSR function.
+  nitro: { preset: "vercel" },
 });
