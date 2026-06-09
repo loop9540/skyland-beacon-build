@@ -1,17 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, Phone, Mountain, HeartHandshake, Sun, Quote, Play, X } from "lucide-react";
+import { ArrowRight, Phone, Play, X, Quote } from "lucide-react";
 import heroImg from "@/assets/hero-ranch.jpg";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
-import horseImg from "@/assets/horse-portrait.jpg";
-import barnImg from "@/assets/barn-dawn-v3.jpg.asset.json";
-import equineAsset from "@/assets/river-valley.jpg.asset.json";
-const equineImg = equineAsset.url;
-import trailImg from "@/assets/forest-trail.jpg";
-import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
+import { Reveal } from "@/components/Reveal";
 import { SITE } from "@/lib/site";
+import { SectionLink } from "@/components/SectionLink";
+import { scrollToSection } from "@/lib/scroll";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { ProgramSection } from "@/components/sections/ProgramSection";
+import { ResidenceSection } from "@/components/sections/ResidenceSection";
+import { AdmissionsSection } from "@/components/sections/AdmissionsSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,6 +43,12 @@ function Index() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const [videoOpen, setVideoOpen] = useState(false);
 
+  // Arriving from a redirected old route (e.g. /about → /#about) or a deep link: scroll to the section.
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) requestAnimationFrame(() => scrollToSection(hash, "auto"));
+  }, []);
+
   useEffect(() => {
     if (!videoOpen) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setVideoOpen(false);
@@ -57,7 +64,7 @@ function Index() {
   return (
     <>
       {/* Hero */}
-      <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
+      <section id="top" ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
           <video
             src={heroVideo.url}
@@ -97,12 +104,12 @@ function Index() {
                   Call {SITE.phone}
                   <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
                 </a>
-                <Link
-                  to="/program"
+                <SectionLink
+                  id="program"
                   className="inline-flex items-center gap-2 rounded-full border border-mist/40 text-mist px-6 py-4 text-base hover:bg-mist/10 transition-colors"
                 >
                   Explore the program
-                </Link>
+                </SectionLink>
               </div>
             </div>
 
@@ -182,174 +189,22 @@ function Index() {
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="relative py-24 md:py-36">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid gap-16 md:grid-cols-12 md:gap-20 items-center">
-          <Reveal className="md:col-span-5">
-            <div className="eyebrow text-moss">Our mission</div>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl leading-[1.05] text-balance">
-              Male drug and alcohol addiction recovery — with dignity.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.15} className="md:col-span-7 space-y-6 text-lg text-foreground/80 text-pretty">
-            <p>
-              At Skyland Ranch, we take great care to foster an atmosphere of mutual respect and
-              honesty. Over the past {SITE.yearsOfService} years the ranch has helped hundreds of
-              men overcome drug, alcohol, and other addiction issues.
-            </p>
-            <p>
-              We're a place where men can live in a drug and alcohol-free environment for short
-              or long-term recovery. As a functioning horse ranch, we offer a quality of life and
-              self-esteem building opportunities perfectly suited to lasting sobriety.
-            </p>
-            <div className="hairline" />
-            <p className="text-base text-muted-foreground">
-              Many residents arrive after multiple short-term treatment programs. The ranch's pace,
-              the work, and the equine therapy give recovery the time it needs.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Three pillars */}
-      <section className="relative bg-secondary/40 py-24 md:py-32 border-y border-border/60">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal>
-            <div className="eyebrow text-moss">What sets the ranch apart</div>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl leading-[1.05] max-w-2xl text-balance">
-              Three things that change a man's life here.
-            </h2>
-          </Reveal>
-          <Stagger className="mt-16 grid gap-6 md:grid-cols-3">
-            {PILLARS.map((p) => (
-              <StaggerItem key={p.title}>
-                <article className="group h-full rounded-2xl bg-card p-8 shadow-soft hover:shadow-lift transition-shadow border border-border/60">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-forest/10 text-forest group-hover:bg-forest group-hover:text-mist transition-colors">
-                    <p.Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-6 font-display text-2xl text-foreground">{p.title}</h3>
-                  <p className="mt-3 text-foreground/70 text-pretty">{p.body}</p>
-                </article>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* Image montage */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid gap-6 md:grid-cols-12 md:gap-8">
-          <Reveal className="md:col-span-7 md:row-span-2">
-            <div className="overflow-hidden rounded-2xl aspect-[4/5] md:aspect-[4/5]">
-              <img src={horseImg} alt="A bay horse in a misty Pacific Northwest pasture" loading="lazy" className="h-full w-full object-cover hover:scale-105 transition-transform duration-[1600ms]" />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1} className="md:col-span-5">
-            <div className="overflow-hidden rounded-2xl aspect-[4/3]">
-              <img src={equineImg} alt="Hands brushing a horse's mane" loading="lazy" className="h-full w-full object-cover hover:scale-105 transition-transform duration-[1600ms]" />
-            </div>
-          </Reveal>
-          <Reveal delay={0.2} className="md:col-span-5">
-            <div className="overflow-hidden rounded-2xl aspect-[4/3]">
-              <img src={barnImg.url} alt="A weathered barn at dawn" loading="lazy" className="h-full w-full object-cover hover:scale-105 transition-transform duration-[1600ms]" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Equine therapy band */}
-      <section className="relative py-24 md:py-36 bg-forest text-mist overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <img src={trailImg} alt="" className="h-full w-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest via-forest/80 to-forest/40" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid gap-12 md:grid-cols-12 items-end">
-          <Reveal className="md:col-span-7">
-            <div className="eyebrow text-sage">Equine therapy</div>
-            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05] text-balance text-mist font-light">
-              A horse can't be lied to.
-            </h2>
-            <p className="mt-6 max-w-xl text-mist/85 text-lg text-pretty">
-              Working with horses asks for presence, patience, and honesty — the same things sobriety
-              asks for. Many of our residents discover that what shifts in the round pen begins to
-              shift in the rest of their lives.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2} className="md:col-span-5 md:text-right">
-            <Link
-              to="/program"
-              className="inline-flex items-center gap-2 text-mist border-b border-dawn/60 pb-2 hover:border-dawn transition-colors"
-            >
-              Read about the program <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Numbers */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid gap-12 md:grid-cols-3">
-          {STATS.map((s, i) => (
-            <Reveal key={s.label} delay={i * 0.1}>
-              <div className="text-center md:text-left">
-                <div className="font-display text-6xl md:text-7xl text-forest font-light">{s.value}</div>
-                <div className="mt-3 text-foreground/70 max-w-xs mx-auto md:mx-0">{s.label}</div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="pb-24 md:pb-32">
-        <div className="mx-auto max-w-5xl px-6">
-          <Reveal>
-            <div className="rounded-3xl bg-gradient-dawn p-10 md:p-16 text-center border border-moss/20 shadow-lift">
-              <div className="eyebrow text-sage">Reach out</div>
-              <h2 className="mt-4 font-display text-4xl md:text-5xl text-mist leading-tight text-balance font-light">
-                When you're ready, the ranch is here.
-              </h2>
-              <p className="mt-6 text-mist/85 max-w-xl mx-auto text-pretty">
-                Speak with someone today. Calls are confidential and there's no pressure — just an
-                honest conversation about whether the ranch might be the right next step.
-              </p>
-              <a
-                href={SITE.phoneHref}
-                className="mt-8 inline-flex items-center gap-3 rounded-full bg-mist text-forest px-8 py-4 text-base font-medium hover:-translate-y-0.5 transition-transform shadow-lift"
-              >
-                <Phone className="h-4 w-4" /> Call {SITE.phone}
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* Folded one-page sections — each photo and topic appears once */}
+      <div id="about" className="scroll-mt-24">
+        <AboutSection />
+      </div>
+      <div id="program" className="scroll-mt-24">
+        <ProgramSection />
+      </div>
+      <div id="residence" className="scroll-mt-24">
+        <ResidenceSection />
+      </div>
+      <div id="admissions" className="scroll-mt-24">
+        <AdmissionsSection />
+      </div>
+      <div id="contact" className="scroll-mt-24">
+        <ContactSection />
+      </div>
     </>
   );
 }
-
-const PILLARS = [
-  {
-    Icon: Mountain,
-    title: "A setting that does the work with you",
-    body:
-      "Breathtaking Cascade scenery, fresh air, and the quiet rhythm of a working ranch. The land itself becomes part of recovery.",
-  },
-  {
-    Icon: HeartHandshake,
-    title: "Mutual respect, honest community",
-    body:
-      "An atmosphere of dignity and honesty among men who understand what it took to get here — and what it takes to stay.",
-  },
-  {
-    Icon: Sun,
-    title: "Time to actually change",
-    body:
-      "Short stays and long-term residency. The ranch gives recovery the time and the steady ground it needs to last.",
-  },
-];
-
-const STATS = [
-  { value: `${SITE.yearsOfService}+`, label: "Years helping men reclaim their lives" },
-  { value: "100s", label: "Of residents supported through sustained recovery" },
-  { value: "45 min", label: "From downtown Seattle to a different kind of quiet" },
-];

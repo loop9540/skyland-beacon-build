@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
+import { SectionLink } from "@/components/SectionLink";
 
 export function SiteFooter() {
   return (
@@ -36,16 +37,21 @@ export function SiteFooter() {
           <div className="md:col-span-4">
             <div className="eyebrow text-sage/70">Pages</div>
             <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
-              {NAV.map((item) => (
-                <li key={item.to}>
-                  <Link
-                    to={item.to}
-                    className="text-sage/90 hover:text-mist transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {NAV.map((item) =>
+                "id" in item ? (
+                  <li key={item.id}>
+                    <SectionLink id={item.id} className="text-sage/90 hover:text-mist transition-colors">
+                      {item.label}
+                    </SectionLink>
+                  </li>
+                ) : (
+                  <li key={item.to}>
+                    <Link to={item.to} className="text-sage/90 hover:text-mist transition-colors">
+                      {item.label}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
           </div>
         </div>

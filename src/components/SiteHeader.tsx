@@ -1,13 +1,16 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
-import { NAV, SITE } from "@/lib/site";
+import { NAV, SECTION_IDS, SITE } from "@/lib/site";
+import { SectionLink } from "@/components/SectionLink";
 import logoAsset from "@/assets/skyland-logo.png.asset.json";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { location } = useRouterState();
+  const [activeId, setActiveId] = useState("top");
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const onHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -18,7 +21,34 @@ export function SiteHeader() {
 
   useEffect(() => {
     setOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
+
+  // Scroll-spy: highlight the nav item for the section currently crossing the viewport.
+  useEffect(() => {
+    if (!onHome) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [onHome]);
+
+  const desktopBase = "px-4 py-2 text-sm transition-colors relative";
+  const mobileBase = "py-3 text-lg font-display transition-colors";
+  const activeCls = "text-forest font-medium";
+  const idleCls = "text-foreground/80 hover:text-forest";
+
+  const isActive = (item: (typeof NAV)[number]) =>
+    "id" in item ? onHome && activeId === item.id : pathname.startsWith(item.to);
 
   return (
     <header
@@ -41,17 +71,25 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
-          {NAV.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              activeOptions={{ exact: item.to === "/" }}
-              className="px-4 py-2 text-sm text-foreground/80 hover:text-forest transition-colors relative"
-              activeProps={{ className: "text-forest font-medium" }}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {NAV.map((item) =>
+            "id" in item ? (
+              <SectionLink
+                key={item.id}
+                id={item.id}
+                className={`${desktopBase} ${isActive(item) ? activeCls : idleCls}`}
+              >
+                {item.label}
+              </SectionLink>
+            ) : (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`${desktopBase} ${isActive(item) ? activeCls : idleCls}`}
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="hidden md:flex items-center">
@@ -76,17 +114,26 @@ export function SiteHeader() {
       {open && (
         <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border/60 animate-reveal">
           <div className="px-6 py-6 flex flex-col gap-1">
-            {NAV.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                activeOptions={{ exact: item.to === "/" }}
-                className="py-3 text-lg font-display text-foreground/80 hover:text-forest"
-                activeProps={{ className: "text-forest font-medium" }}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV.map((item) =>
+              "id" in item ? (
+                <SectionLink
+                  key={item.id}
+                  id={item.id}
+                  onNavigate={() => setOpen(false)}
+                  className={`${mobileBase} ${isActive(item) ? activeCls : idleCls}`}
+                >
+                  {item.label}
+                </SectionLink>
+              ) : (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`${mobileBase} ${isActive(item) ? activeCls : idleCls}`}
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
             <a
               href={SITE.phoneHref}
               className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-forest text-primary-foreground px-5 py-3 text-base font-medium"

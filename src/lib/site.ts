@@ -9,12 +9,17 @@ export const SITE = {
   yearsOfService: new Date().getFullYear() - 1986,
 } as const;
 
+// Single-page nav: items with `id` scroll to a section on the home route.
+// `referrals` stays a real route (it is auth/role-gated with server functions).
 export const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/program", label: "The Program" },
-  { to: "/residence", label: "Residence" },
-  { to: "/admissions", label: "Admissions" },
+  { id: "top", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "program", label: "The Program" },
+  { id: "residence", label: "Residence" },
+  { id: "admissions", label: "Admissions" },
   { to: "/referrals", label: "Referrals" },
-  { to: "/contact", label: "Contact" },
+  { id: "contact", label: "Contact" },
 ] as const;
+
+// Section ids in document order, used for scroll-spy active highlighting.
+export const SECTION_IDS = ["top", "about", "program", "residence", "admissions", "contact"] as const;

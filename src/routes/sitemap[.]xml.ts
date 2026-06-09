@@ -9,13 +9,10 @@ interface SitemapEntry {
   priority?: string;
 }
 
+// Single-page site: the home page is the canonical URL. Referrals stays a standalone route.
 const ENTRIES: SitemapEntry[] = [
   { path: "/", changefreq: "monthly", priority: "1.0" },
-  { path: "/about", changefreq: "yearly", priority: "0.8" },
-  { path: "/program", changefreq: "yearly", priority: "0.9" },
-  { path: "/admissions", changefreq: "yearly", priority: "0.9" },
   { path: "/referrals", changefreq: "yearly", priority: "0.8" },
-  { path: "/contact", changefreq: "yearly", priority: "0.7" },
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({
