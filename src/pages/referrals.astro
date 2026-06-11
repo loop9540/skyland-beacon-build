@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { Phone, Mail, Check } from "@lucide/astro";
+import { SITE } from "../lib/site";
+import barnImg from "../assets/barn-dawn-v3.jpg";
+
+const offers = [
+  "Men only, ages 18+, post-detox and stable",
+  "Drug- and alcohol-free residence in the Cascade foothills",
+  "Structured days with work, equine care, and recovery support",
+  "Open-ended length of stay — most residents stay 6 to 18 months",
+  "45 minutes from Seattle; we coordinate transport from SeaTac",
+];
+---
+
+<Layout
+  title="Referrals for Clinicians — Aftercare Placement | Skyland Ranch"
+  description="Rehab clinicians and case managers: refer a client to Skyland Ranch for long-term aftercare on a working horse ranch near Seattle, WA. One phone call, no paperwork to begin."
+  path="/referrals"
+>
+  <PageHeader
+    eyebrow="For Clinicians"
+    title="Referrals for<br /> aftercare placement."
+    intro="If you're a clinician or case manager at a treatment center and you have a client whose next step is long-term sober living, we'd like to talk. The fastest way is a single phone call — no forms, no portals."
+    image={barnImg}
+    imageAlt="A weathered barn at dawn on the ranch"
+    light
+  />
+
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-6 grid gap-12 md:grid-cols-2 items-start">
+      <div class="reveal">
+        <div class="rounded-3xl bg-gradient-dawn p-10 md:p-12 text-mist shadow-lift">
+          <div class="eyebrow text-sage">What we offer</div>
+          <h2 class="mt-3 font-display text-4xl md:text-5xl leading-tight font-light text-balance">
+            Long-term aftercare on a working ranch.
+          </h2>
+          <ul class="mt-8 space-y-4 text-mist/90">
+            {
+              offers.map((line) => (
+                <li class="flex items-start gap-3">
+                  <Check class="mt-1 h-4 w-4 shrink-0 text-sage" />
+                  <span class="text-pretty">{line}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="--reveal-delay:150ms">
+        <div class="rounded-2xl bg-card border border-border/60 p-8 md:p-10 shadow-soft">
+          <div class="eyebrow text-moss">Make a referral</div>
+          <h3 class="mt-3 font-display text-3xl leading-tight text-foreground">
+            One call, and we'll take it from there.
+          </h3>
+          <p class="mt-4 text-foreground/75 text-pretty">
+            We've kept this deliberately simple: no intake forms, no client portal. Call or email and
+            we'll talk through the placement the same day. Please <strong>do not send protected health
+            information</strong> by email — a short description of the need is enough, and we'll follow
+            up by phone for anything further.
+          </p>
+
+          <div class="mt-8 space-y-4">
+            <a
+              href={SITE.phoneHref}
+              class="flex items-center gap-4 rounded-xl border border-border/70 bg-background px-5 py-4 hover:border-forest/40 transition-colors"
+            >
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-forest text-mist">
+                <Phone class="h-5 w-5" />
+              </span>
+              <span>
+                <span class="block text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">Call us</span>
+                <span class="mt-0.5 block text-lg font-medium text-foreground">{SITE.phone}</span>
+              </span>
+            </a>
+            <a
+              href={`mailto:${SITE.email}?subject=Clinician%20referral%20%E2%80%94%20aftercare%20placement`}
+              class="flex items-center gap-4 rounded-xl border border-border/70 bg-background px-5 py-4 hover:border-forest/40 transition-colors"
+            >
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-forest text-mist">
+                <Mail class="h-5 w-5" />
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">Email us</span>
+                <span class="mt-0.5 block text-lg font-medium text-foreground break-all">{SITE.email}</span>
+              </span>
+            </a>
+          </div>
+
+          <p class="mt-6 text-xs text-muted-foreground text-pretty">
+            Calls are answered daily. We're happy to talk through a placement before any paperwork.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

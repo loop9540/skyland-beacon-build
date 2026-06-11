@@ -1,0 +1,68 @@
+---
+import { Phone, Mail, MapPin } from "@lucide/astro";
+import { NAV, SITE, url, sectionHref } from "../lib/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-forest text-primary-foreground">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-10">
+    <div class="grid gap-12 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <div class="eyebrow text-sage">{SITE.tagline}</div>
+        <h2 class="mt-3 font-display text-3xl md:text-4xl text-balance leading-[1.1]">
+          A quiet place to begin again.
+        </h2>
+        <p class="mt-5 text-sage/90 max-w-md text-pretty">
+          For {SITE.yearsOfService} years, Skyland Ranch has offered men a working-ranch home where sobriety
+          can take root — slowly, honestly, and with dignity.
+        </p>
+        <a
+          href={SITE.phoneHref}
+          class="mt-8 inline-flex items-center gap-3 rounded-full bg-dawn text-accent-foreground px-6 py-3 text-base font-medium hover:-translate-y-px transition-transform"
+        >
+          <Phone class="h-4 w-4" /> Call {SITE.phone}
+        </a>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="eyebrow text-sage/70">Visit</div>
+        <ul class="mt-4 space-y-3 text-sage/90 text-sm">
+          <li class="flex gap-3"><MapPin class="h-4 w-4 mt-0.5 shrink-0" /> {SITE.location}</li>
+          <li class="flex gap-3">
+            <Phone class="h-4 w-4 mt-0.5 shrink-0" />
+            <a href={SITE.phoneHref} class="hover:text-mist transition-colors">{SITE.phone}</a>
+          </li>
+          <li class="flex gap-3">
+            <Mail class="h-4 w-4 mt-0.5 shrink-0" />
+            <a href={`mailto:${SITE.email}`} class="hover:text-mist transition-colors break-all">{SITE.email}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <div class="eyebrow text-sage/70">Pages</div>
+        <ul class="mt-4 grid grid-cols-2 gap-2 text-sm">
+          {
+            NAV.map((item) => (
+              <li>
+                <a
+                  href={"id" in item ? sectionHref(item.id) : url(item.href)}
+                  class="text-sage/90 hover:text-mist transition-colors"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-16 pt-8 border-t border-mist/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-sage/70"
+    >
+      <div>© {year} Skyland Ranch. All rights reserved.</div>
+      <div>A 501(c)(3) nonprofit · Sober living for men since {SITE.established}</div>
+    </div>
+  </div>
+</footer>

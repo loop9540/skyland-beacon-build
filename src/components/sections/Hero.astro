@@ -1,0 +1,120 @@
+---
+import { getImage } from "astro:assets";
+import { ArrowRight, Phone, Play, X } from "@lucide/astro";
+import { SITE, url, sectionHref } from "../../lib/site";
+import heroPosterSrc from "../../assets/hero-ranch.jpg";
+
+// Optimize the hero poster (the LCP image) to WebP instead of shipping the raw JPEG.
+const heroPoster = await getImage({ src: heroPosterSrc, format: "webp", width: 1600 });
+
+const youtubeId = "13ERTGWCvH4";
+const embedSrc = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+---
+
+<section id="top" class="relative min-h-[100svh] overflow-hidden">
+  <div class="absolute inset-0">
+    <video
+      src={url("/media/hero-bg.mp4")}
+      poster={heroPoster.src}
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      class="h-full w-full object-cover"></video>
+    <div class="absolute inset-0 bg-gradient-to-b from-forest/40 via-forest/20 to-mist"></div>
+  </div>
+
+  <div
+    class="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-6 pt-28 pb-24 lg:px-10 lg:pt-32 lg:pb-28"
+  >
+    <div
+      class="animate-reveal grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12"
+    >
+      <div>
+        <div class="eyebrow text-white drop-shadow-sm">A 501(c)(3) nonprofit</div>
+        <h1
+          class="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.02] text-mist text-balance"
+        >
+          There is <em class="not-italic font-normal text-dawn">hope</em> —<br />
+          and a quiet place<br />to begin again.
+        </h1>
+        <p class="mt-7 max-w-xl text-lg text-mist/90 text-pretty">
+          A working horse ranch in the Cascade foothills, 45 minutes from Seattle, where men recover
+          their footing through honest work, mutual respect, and the steady company of horses.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a
+            href={SITE.phoneHref}
+            class="group inline-flex items-center gap-3 rounded-full bg-dawn text-accent-foreground px-7 py-4 text-base font-medium shadow-lift hover:-translate-y-0.5 transition-transform"
+          >
+            <Phone class="h-4 w-4" />
+            Call {SITE.phone}
+            <ArrowRight
+              class="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0"
+            />
+          </a>
+          <a
+            href={sectionHref("program")}
+            class="inline-flex items-center gap-2 rounded-full border border-mist/40 text-mist px-6 py-4 text-base hover:bg-mist/10 transition-colors"
+          >
+            Explore the program
+          </a>
+        </div>
+      </div>
+
+      <button
+        id="video-open"
+        type="button"
+        data-embed={embedSrc}
+        class="group relative overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full"
+      >
+        <img
+          src={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
+          alt="Watch the Skyland Ranch film"
+          width="1280"
+          height="720"
+          class="h-auto w-full object-cover aspect-video"
+        />
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center bg-forest/25 group-hover:bg-forest/35 transition-colors gap-2"
+        >
+          <span
+            class="flex h-14 w-14 items-center justify-center rounded-full bg-mist/95 text-forest shadow-lift group-hover:scale-110 transition-transform"
+          >
+            <Play class="h-6 w-6 fill-current ml-1" />
+          </span>
+          <span class="text-mist font-medium drop-shadow-md">Watch the film</span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-mist/70"
+  >
+    <span class="text-[0.65rem] uppercase tracking-[0.3em]">Scroll</span>
+    <div class="h-10 w-px bg-mist/40 animate-drift"></div>
+  </div>
+</section>
+
+<!-- Video lightbox (iframe injected on open) -->
+<div
+  id="video-modal"
+  class="fixed inset-0 z-[100] flex items-center justify-center bg-forest/95 backdrop-blur-sm p-4 md:p-8"
+  hidden
+>
+  <button
+    type="button"
+    data-close
+    aria-label="Close video"
+    class="absolute top-5 right-5 md:top-8 md:right-8 flex h-11 w-11 items-center justify-center rounded-full bg-mist/10 border border-mist/30 text-mist hover:bg-mist/20 transition-colors"
+  >
+    <X class="h-5 w-5" />
+  </button>
+  <div class="absolute inset-0" data-close aria-hidden="true"></div>
+  <div
+    data-frame
+    class="relative w-full max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-lift">
+  </div>
+</div>
