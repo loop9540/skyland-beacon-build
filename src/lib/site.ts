@@ -1,3 +1,6 @@
+// Single source of truth for site-wide content and navigation.
+// No database, no CMS — edit values here and rebuild.
+
 export const SITE = {
   name: "Skyland Ranch",
   tagline: "There is hope.",
@@ -6,20 +9,37 @@ export const SITE = {
   location: "Gold Bar, Washington · 45 minutes from Seattle",
   email: "Skylandranch2611@gmail.com",
   established: 1986,
-  yearsOfService: new Date().getFullYear() - 1986,
+  get yearsOfService() {
+    return new Date().getFullYear() - this.established;
+  },
 } as const;
 
-// Single-page nav: items with `id` scroll to a section on the home route.
-// `referrals` stays a real route (it is auth/role-gated with server functions).
-export const NAV = [
+export type NavItem =
+  | { id: string; label: string }
+  | { href: string; label: string };
+
+// Items with `id` scroll to an on-page section; items with `href` are real pages.
+export const NAV: NavItem[] = [
   { id: "top", label: "Home" },
   { id: "about", label: "About" },
   { id: "program", label: "The Program" },
   { id: "residence", label: "Residence" },
   { id: "admissions", label: "Admissions" },
-  { to: "/referrals", label: "Referrals" },
+  { href: "/referrals", label: "Referrals" },
   { id: "contact", label: "Contact" },
-] as const;
+];
 
-// Section ids in document order, used for scroll-spy active highlighting.
-export const SECTION_IDS = ["top", "about", "program", "residence", "admissions", "contact"] as const;
+// Sections present on the home page, in document order — used for scroll-spy.
+export const SECTION_IDS = ["top", "about", "program", "residence", "admissions", "contact"];
+
+/** Prefix an internal path with the configured base so links work under /<repo>/ on GitHub Pages. */
+export function url(path: string): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  if (!path.startsWith("/")) path = "/" + path;
+  return base + path;
+}
+
+/** Href for an in-page section anchor (works from any page — falls back to home + hash). */
+export function sectionHref(id: string): string {
+  return id === "top" ? url("/") : `${url("/")}#${id}`;
+}

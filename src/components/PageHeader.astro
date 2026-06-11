@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  eyebrow: string;
+  /** May contain <br> for line breaks (trusted, authored content). */
+  title: string;
+  intro?: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  light?: boolean;
+  bottomImage?: ImageMetadata;
+  bottomImageAlt?: string;
+  /** Heading level. Folded one-page sections pass "h2" so the page keeps a single h1. */
+  as?: "h1" | "h2";
+}
+
+const {
+  eyebrow,
+  title,
+  intro,
+  image,
+  imageAlt = "",
+  light = false,
+  bottomImage,
+  bottomImageAlt = "",
+  as = "h1",
+} = Astro.props;
+
+const Heading = as;
+---
+
+<section class="relative pt-32 md:pt-40 pb-20 md:pb-28 overflow-hidden">
+  <div class="absolute inset-0 -z-10">
+    {
+      image && (
+        <Image
+          src={image}
+          alt={imageAlt}
+          class="h-full w-full object-cover animate-ken-burns"
+          loading="eager"
+          widths={[768, 1280, 1920]}
+          sizes="100vw"
+        />
+      )
+    }
+    {
+      light ? (
+        <div class={`absolute inset-0 ${image ? "bg-mist/80" : "bg-mist"}`} />
+      ) : (
+        <div
+          class={`absolute inset-0 ${image ? "bg-gradient-to-b from-forest/90 via-forest/80 to-forest/70" : "bg-forest"}`}
+        />
+      )
+    }
+  </div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 pt-12 md:pt-20">
+    <div class="reveal">
+      <div class={`eyebrow ${light ? "text-forest" : "text-white"}`}>{eyebrow}</div>
+      <Heading
+        class={`mt-4 font-display text-5xl md:text-7xl font-light leading-[1.02] text-balance max-w-4xl ${light ? "text-forest" : "text-white"}`}
+        set:html={title}
+      />
+      {
+        intro && (
+          <p class={`mt-6 max-w-2xl text-lg text-pretty ${light ? "text-forest/90" : "text-white/90"}`}>
+            {intro}
+          </p>
+        )
+      }
+    </div>
+
+    {
+      bottomImage && (
+        <div class="reveal mt-10 md:mt-14 rounded-2xl overflow-hidden shadow-lift" style="--reveal-delay:150ms">
+          <Image
+            src={bottomImage}
+            alt={bottomImageAlt}
+            class="w-full h-auto object-cover"
+            loading="eager"
+            widths={[768, 1280, 1600]}
+            sizes="(min-width: 1280px) 1200px, 100vw"
+          />
+        </div>
+      )
+    }
+  </div>
+</section>

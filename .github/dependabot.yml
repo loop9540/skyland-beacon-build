@@ -1,19 +1,13 @@
 version: 2
 updates:
-  # npm/bun dependencies — security patches and version bumps.
+  # npm dependencies — security patches and version bumps.
   - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
-    groups:
-      # Batch the many @radix-ui/* packages into one PR to reduce noise.
-      radix:
-        patterns: ["@radix-ui/*"]
-      tanstack:
-        patterns: ["@tanstack/*"]
 
-  # Keep the GitHub Actions used in CI patched too.
+  # Keep the GitHub Actions used in the deploy workflow patched too.
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
