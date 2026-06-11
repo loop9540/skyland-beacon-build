@@ -3,21 +3,13 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
-// GitHub Pages project site is served at https://<user>.github.io/<repo>/.
-// `site` + `base` make absolute URLs, the sitemap, and astro:assets paths correct.
-// If you later attach a custom domain, set site to it and base to "/".
+// Deployed on Vercel at the site root (custom domain skylandranch.org).
+// `site` sets absolute URLs for canonicals/OG/sitemap; no base path on Vercel.
+// If the production domain changes, update `site` here.
 export default defineConfig({
-  site: "https://loop9540.github.io",
-  base: "/skyland-beacon-build",
-  // Serve and link every page with a trailing slash so canonicals, the sitemap,
-  // and what GitHub Pages actually serves all agree (avoids duplicate-URL signals).
-  trailingSlash: "always",
-  integrations: [
-    sitemap({
-      // Drop the spurious base-without-slash entry; keep the canonical "…/" root.
-      filter: (page) => page !== "https://loop9540.github.io/skyland-beacon-build",
-    }),
-  ],
+  site: "https://skylandranch.org",
+  trailingSlash: "ignore",
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },

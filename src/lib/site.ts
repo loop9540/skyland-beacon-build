@@ -9,8 +9,13 @@ export const SITE = {
   location: "Gold Bar, Washington · 45 minutes from Seattle",
   email: "Skylandranch2611@gmail.com",
   established: 1986,
+  acres: 140,
+  youtubeId: "13ERTGWCvH4",
   get yearsOfService() {
     return new Date().getFullYear() - this.established;
+  },
+  get filmEmbed() {
+    return `https://www.youtube.com/embed/${this.youtubeId}?autoplay=1&rel=0`;
   },
 } as const;
 
@@ -25,7 +30,7 @@ export const NAV: NavItem[] = [
   { id: "program", label: "The Program" },
   { id: "residence", label: "Residence" },
   { id: "admissions", label: "Admissions" },
-  { href: "/referrals", label: "Referrals" },
+  { id: "referrals", label: "Referrals" },
   { id: "contact", label: "Contact" },
 ];
 
