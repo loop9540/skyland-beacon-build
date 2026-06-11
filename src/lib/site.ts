@@ -29,9 +29,6 @@ export const NAV: NavItem[] = [
   { id: "contact", label: "Contact" },
 ];
 
-// Sections present on the home page, in document order — used for scroll-spy.
-export const SECTION_IDS = ["top", "about", "program", "residence", "admissions", "contact"];
-
 /** Prefix an internal path with the configured base so links work under /<repo>/ on GitHub Pages. */
 export function url(path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
