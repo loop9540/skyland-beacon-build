@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { url } from "../lib/site";
+import { url, SITE } from "../lib/site";
 
 interface Props {
   title: string;
@@ -31,8 +31,8 @@ const jsonLd = {
   description:
     "A drug and alcohol-free working horse ranch offering long-term sober living for men near Seattle, Washington.",
   url: canonical,
-  telephone: "+1-360-793-2611",
-  email: "Skylandranch2611@gmail.com",
+  telephone: SITE.phoneHref.replace("tel:", ""),
+  email: SITE.email,
   image: ogImage,
   priceRange: "$$",
   address: {
