@@ -21,7 +21,9 @@ const {
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://accubotai.github.io");
-const canonical = new URL(url(path), site).href;
+// Canonicals/og:url use a trailing slash to match what GitHub Pages serves.
+const pagePath = path.endsWith("/") ? path : `${path}/`;
+const canonical = new URL(url(pagePath), site).href;
 const ogImage = new URL(url("/media/og-image.jpg"), site).href;
 
 const jsonLd = {
@@ -81,8 +83,9 @@ const jsonLd = {
     }
   </head>
   <body>
+    <a href="#main" class="skip-link">Skip to content</a>
     <Header />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <Footer />

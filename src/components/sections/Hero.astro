@@ -1,7 +1,11 @@
 ---
+import { getImage } from "astro:assets";
 import { ArrowRight, Phone, Play, X } from "@lucide/astro";
 import { SITE, url, sectionHref } from "../../lib/site";
-import heroPoster from "../../assets/hero-ranch.jpg";
+import heroPosterSrc from "../../assets/hero-ranch.jpg";
+
+// Optimize the hero poster (the LCP image) to WebP instead of shipping the raw JPEG.
+const heroPoster = await getImage({ src: heroPosterSrc, format: "webp", width: 1600 });
 
 const youtubeId = "13ERTGWCvH4";
 const embedSrc = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;

@@ -9,8 +9,15 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://accubotai.github.io",
   base: "/skyland-beacon-build",
-  trailingSlash: "ignore",
-  integrations: [sitemap()],
+  // Serve and link every page with a trailing slash so canonicals, the sitemap,
+  // and what GitHub Pages actually serves all agree (avoids duplicate-URL signals).
+  trailingSlash: "always",
+  integrations: [
+    sitemap({
+      // Drop the spurious base-without-slash entry; keep the canonical "…/" root.
+      filter: (page) => page !== "https://accubotai.github.io/skyland-beacon-build",
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
