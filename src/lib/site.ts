@@ -7,7 +7,7 @@ export const SITE = {
   phone: "360-793-2611",
   phoneHref: "tel:+13607932611",
   location: "Gold Bar, Washington · 45 minutes from Seattle",
-  email: "info@skylandranch.org",
+  email: "Skylandranch2611@gmail.com",
   established: 1986,
   get yearsOfService() {
     return new Date().getFullYear() - this.established;

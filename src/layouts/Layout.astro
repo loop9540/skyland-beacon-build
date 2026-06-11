@@ -20,7 +20,7 @@ const {
   organizationSchema = false,
 } = Astro.props;
 
-const site = Astro.site ?? new URL("https://accubotai.github.io");
+const site = Astro.site ?? new URL("https://loop9540.github.io");
 // Canonicals/og:url use a trailing slash to match what GitHub Pages serves.
 const pagePath = path.endsWith("/") ? path : `${path}/`;
 const canonical = new URL(url(pagePath), site).href;

@@ -7,7 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 // `site` + `base` make absolute URLs, the sitemap, and astro:assets paths correct.
 // If you later attach a custom domain, set site to it and base to "/".
 export default defineConfig({
-  site: "https://accubotai.github.io",
+  site: "https://loop9540.github.io",
   base: "/skyland-beacon-build",
   // Serve and link every page with a trailing slash so canonicals, the sitemap,
   // and what GitHub Pages actually serves all agree (avoids duplicate-URL signals).
@@ -15,7 +15,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Drop the spurious base-without-slash entry; keep the canonical "…/" root.
-      filter: (page) => page !== "https://accubotai.github.io/skyland-beacon-build",
+      filter: (page) => page !== "https://loop9540.github.io/skyland-beacon-build",
     }),
   ],
   vite: {
