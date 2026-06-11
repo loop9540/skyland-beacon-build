@@ -95,5 +95,6 @@ const FITS = [
   "Wants a drug and alcohol-free environment to live in, short or long term.",
   "Has tried other treatment and is looking for something with more time and more ground beneath it.",
   "Is open to honest work, ranch life, and being part of a community of men in recovery.",
+  "Arrives with a dual diagnosis — substance use alongside depression, anxiety, or trauma — and is open to community-based support with clinical connections.",
   "Is medically and physically able to participate in ranch chores and daily life.",
 ];
