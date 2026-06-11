@@ -62,6 +62,26 @@ export function AdmissionsSection() {
         </div>
       </section>
 
+      <section className="bg-forest text-mist py-24 md:py-32">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <Reveal>
+            <div className="eyebrow text-sage">Cost & accessibility</div>
+            <h3 className="mt-4 font-display text-3xl md:text-4xl leading-tight text-balance font-light">
+              We work with families to make this accessible.
+            </h3>
+            <p className="mt-6 text-mist/85 text-lg text-pretty max-w-2xl mx-auto">
+              The ranch operates on a sliding scale based on circumstance. We encourage you to call and talk through what might work — no pressure, no obligation.
+            </p>
+            <SectionLink
+              id="contact"
+              className="mt-8 inline-flex items-center gap-2 text-dawn border-b border-dawn/40 pb-1 hover:border-dawn transition-colors"
+            >
+              Talk to us about fees <ArrowRight className="h-4 w-4" />
+            </SectionLink>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <Reveal>
