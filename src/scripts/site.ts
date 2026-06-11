@@ -90,17 +90,18 @@ function initScrollSpy() {
   });
 }
 
-/* Video lightbox: lazy-loads the YouTube embed only when opened. */
+/* Video lightbox: lazy-loads the YouTube embed only when opened. Any element
+   with [data-video-open] (and a data-embed URL) triggers the shared modal. */
 function initVideoLightbox() {
-  const openBtn = document.getElementById("video-open");
   const modal = document.getElementById("video-modal");
-  if (!openBtn || !modal) return;
+  const triggers = document.querySelectorAll<HTMLElement>("[data-video-open]");
+  if (!modal || !triggers.length) return;
   const frameHost = modal.querySelector<HTMLElement>("[data-frame]");
-  const embed = openBtn.dataset.embed || "";
   const closeEls = modal.querySelectorAll("[data-close]");
 
-  const open = () => {
-    if (frameHost && !frameHost.querySelector("iframe")) {
+  const open = (embed: string) => {
+    if (frameHost && embed) {
+      frameHost.innerHTML = "";
       const iframe = document.createElement("iframe");
       iframe.src = embed;
       iframe.title = "Skyland Ranch — film";
@@ -119,7 +120,9 @@ function initVideoLightbox() {
     if (frameHost) frameHost.innerHTML = ""; // stop playback
   };
 
-  openBtn.addEventListener("click", open);
+  triggers.forEach((btn) =>
+    btn.addEventListener("click", () => open(btn.dataset.embed || "")),
+  );
   closeEls.forEach((el) => el.addEventListener("click", close));
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal.hidden) close();

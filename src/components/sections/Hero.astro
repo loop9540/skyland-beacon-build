@@ -7,8 +7,8 @@ import heroPosterSrc from "../../assets/hero-ranch.jpg";
 // Optimize the hero poster (the LCP image) to WebP instead of shipping the raw JPEG.
 const heroPoster = await getImage({ src: heroPosterSrc, format: "webp", width: 1600 });
 
-const youtubeId = "13ERTGWCvH4";
-const embedSrc = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+const youtubeId = SITE.youtubeId;
+const embedSrc = SITE.filmEmbed;
 ---
 
 <section id="top" class="relative min-h-[100svh] overflow-hidden">
@@ -64,9 +64,10 @@ const embedSrc = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
       </div>
 
       <button
-        id="video-open"
         type="button"
+        data-video-open
         data-embed={embedSrc}
+        aria-label="Play the Skyland Ranch film"
         class="group relative overflow-hidden rounded-2xl border-2 border-mist/40 shadow-lift hover:shadow-2xl transition-all hover:-translate-y-1 w-full"
       >
         <img
