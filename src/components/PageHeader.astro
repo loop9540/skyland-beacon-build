@@ -74,11 +74,11 @@ const Heading = as;
 
     {
       bottomImage && (
-        <div class="reveal mt-10 md:mt-14 rounded-2xl overflow-hidden shadow-lift" style="--reveal-delay:150ms">
+        <div class="reveal mt-10 md:mt-14 rounded-2xl overflow-hidden shadow-lift aspect-[4/3] md:aspect-[16/9]" style="--reveal-delay:150ms">
           <Image
             src={bottomImage}
             alt={bottomImageAlt}
-            class="w-full h-auto object-cover"
+            class="w-full h-full object-cover"
             loading="eager"
             widths={[768, 1280, 1600]}
             sizes="(min-width: 1280px) 1200px, 100vw"
