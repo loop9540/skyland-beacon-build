@@ -4,7 +4,7 @@ import PageHeader from "../PageHeader.astro";
 import { sectionHref } from "../../lib/site";
 import { Sunrise, Hammer, Users, Leaf, Moon } from "@lucide/astro";
 import equineImg from "../../assets/equine-saddle.png";
-import horseImg from "../../assets/horse-portrait.jpg";
+import leviImg from "../../assets/levi-horse.jpg";
 import arenaImg from "../../assets/horseback-arena-v2.jpg";
 
 const DAY = [
@@ -58,14 +58,14 @@ const DAY = [
 <section class="bg-forest text-mist py-24 md:py-36 overflow-hidden">
   <div class="mx-auto max-w-7xl px-6 lg:px-10 grid gap-16 md:grid-cols-12 items-center">
     <div class="reveal md:col-span-6">
-      <div class="overflow-hidden rounded-2xl aspect-[4/5] max-w-md mx-auto">
+      <div class="overflow-hidden rounded-2xl aspect-[4/3] mx-auto">
         <Image
-          src={horseImg}
-          alt="A horse standing quietly at dawn"
+          src={leviImg}
+          alt="A resident riding a palomino horse in the arena, evergreens and mountains behind"
           loading="lazy"
           class="h-full w-full object-cover"
-          widths={[400, 600, 900]}
-          sizes="(min-width: 768px) 28rem, 100vw"
+          widths={[640, 960, 1400]}
+          sizes="(min-width: 768px) 50vw, 100vw"
         />
       </div>
     </div>

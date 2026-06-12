@@ -5,6 +5,7 @@ import { SITE } from "../../lib/site";
 import barnImg from "../../assets/barn-dawn-v3.jpg";
 import valleyImg from "../../assets/river-valley.jpg";
 import trailImg from "../../assets/forest-trail.jpg";
+import paImg from "../../assets/pa-horseback.jpg";
 
 const VALUES = [
   { title: "Honesty", body: "We meet every man where he is, and we ask him to do the same. Pretense doesn't survive long around horses." },
@@ -91,11 +92,22 @@ const STATS = [
       </div>
     </div>
     <div class="reveal md:col-span-6 flex" style="--reveal-delay:150ms">
-      <div class="rounded-3xl bg-gradient-dawn p-10 md:p-12 text-mist shadow-lift flex flex-col justify-center">
-        <blockquote class="font-display text-3xl md:text-4xl leading-[1.15] font-light text-balance">
-          “The horses take care of the residents, and the residents take care of the horses.”
-        </blockquote>
-        <div class="mt-6 eyebrow text-sage">— Pa, founder of Skyland Ranch</div>
+      <div class="relative rounded-3xl overflow-hidden shadow-lift flex flex-col justify-end w-full">
+        <Image
+          src={paImg}
+          alt="Pa on horseback at the ranch, mountains behind"
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+          widths={[640, 900]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/85 via-forest/25 to-transparent"></div>
+        <div class="relative p-10 md:p-12 text-mist">
+          <blockquote class="font-display text-3xl md:text-4xl leading-[1.15] font-light text-balance">
+            “The horses take care of the residents, and the residents take care of the horses.”
+          </blockquote>
+          <div class="mt-6 eyebrow text-sage">— Pa, founder of Skyland Ranch</div>
+        </div>
       </div>
     </div>
   </div>
