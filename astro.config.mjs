@@ -3,16 +3,12 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
-// Deployed on Vercel at the site root (custom domain skylandranch.org).
-// `site` sets absolute URLs for canonicals/OG/sitemap; no base path on Vercel.
-// If the production domain changes, update `site` here.
-// GITHUB_PAGES=true (set by .github/workflows/deploy-pages.yml) builds for
-// https://loop9540.github.io/skyland-beacon-build/ instead.
-const ghPages = process.env.GITHUB_PAGES === "true";
-
+// Published via GitHub Pages on the apex custom domain skylandranch.org.
+// public/CNAME pins the domain; the build serves from the site root (no base path).
+// `site` sets absolute URLs for canonicals/OG/sitemap. Update it if the domain changes.
 export default defineConfig({
-  site: ghPages ? "https://loop9540.github.io" : "https://skylandranch.org",
-  base: ghPages ? "/skyland-beacon-build" : undefined,
+  site: "https://skylandranch.org",
+  base: undefined,
   trailingSlash: "ignore",
   integrations: [sitemap()],
   vite: {
