@@ -1,7 +1,7 @@
 ---
 import { Clock, Mail, MapPin, Phone } from "lucide";
 import LucideIcon from "@/components/LucideIcon.astro";
-import { SITE } from "../../lib/site";
+import { SITE, url } from "../../lib/site";
 
 const rows = [
   { icon: Phone, label: "Phone", value: SITE.phone, href: SITE.phoneHref },
@@ -42,7 +42,7 @@ const rows = [
             <LucideIcon icon={Phone} class="h-5 w-5" /> {SITE.phone}
           </a>
           <p class="mt-6 text-mist/85 text-pretty">
-            Calls are private. We listen first, then answer questions. There is never any pressure.
+            Calls are handled personally. We listen first, then answer questions. There is never any pressure.
           </p>
         </div>
       </div>
@@ -84,6 +84,13 @@ const rows = [
           <p class="mt-6 text-sm text-muted-foreground text-pretty">
             If you're calling on behalf of a loved one — a son, a brother, a friend — that's a
             conversation we have often, and we welcome it.
+          </p>
+          <p class="mt-4 text-xs text-muted-foreground text-pretty">
+            Please use email for fit, housing, and logistics only. Do not email medical records,
+            treatment records, or PHI. Read our{" "}
+            <a href={url("/privacy")} class="text-forest underline underline-offset-4 hover:text-moss">
+              privacy and non-clinical notice
+            </a>.
           </p>
         </div>
       </div>

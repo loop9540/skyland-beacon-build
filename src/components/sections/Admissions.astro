@@ -1,6 +1,6 @@
 ---
 import PageHeader from "../PageHeader.astro";
-import { SITE, sectionHref } from "../../lib/site";
+import { SITE, sectionHref, url } from "../../lib/site";
 import { ArrowRight, Check, MapPin, Play } from "lucide";
 import LucideIcon from "@/components/LucideIcon.astro";
 import valleyImg from "../../assets/admissions-valley.jpg";
@@ -24,7 +24,7 @@ const FITS = [
   as="h2"
   eyebrow="Admissions"
   title="The first call<br /> is the hardest one."
-  intro="There's no form to fill out before you can talk to a real person. Pick up the phone, and we'll walk through whether the ranch is the right sober living fit — honestly, privately, with no pressure."
+  intro="There's no form to fill out before you can talk to a real person. Pick up the phone, and we'll walk through whether the ranch is the right sober living fit — honestly, thoughtfully, with no pressure."
   image={valleyImg}
   imageAlt="A green pasture at the ranch with the Cascade foothills rising behind"
   light
@@ -164,7 +164,11 @@ const FITS = [
         Make the call.<br />We'll take it from there.
       </h3>
       <p class="mt-6 text-foreground/70 text-pretty">
-        Calls are private, and there's no obligation. When you're ready, here's how to reach us.
+        Calls are handled personally, and there's no obligation. When you're ready, here's how to
+        reach us. For email boundaries and non-clinical scope, read our{" "}
+        <a href={url("/privacy")} class="text-forest underline underline-offset-4 hover:text-moss">
+          privacy and non-clinical notice
+        </a>.
       </p>
       <a
         href={sectionHref("contact")}
