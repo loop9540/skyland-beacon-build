@@ -10,14 +10,14 @@ import kcImg from "../../assets/kc-horseback.jpg";
 
 const VALUES = [
   { title: "Honesty", body: "We meet every man where he is, and we ask him to do the same. Pretense doesn't survive long around horses." },
-  { title: "Mutual respect", body: "Recovery is hard. The ranch is a place where that hardness is held with dignity, not judgment." },
+  { title: "Mutual respect", body: "Sobriety is hard. The ranch is a place where that work is held with dignity, not judgment." },
   { title: "Quiet structure", body: "Days have rhythm — chores, meals, work, rest. The structure carries men when willpower can't." },
   { title: "Time", body: "We honor the truth that lasting sobriety is built slowly. Short stays are welcome; long stays are often what works." },
 ];
 
 const STATS = [
   { value: `${SITE.yearsOfService}+`, label: "Years helping men reclaim their lives" },
-  { value: "100s", label: "Of residents supported through sustained recovery" },
+  { value: "100s", label: "Of residents supported in sober daily life" },
   { value: "45 min", label: "From downtown Seattle to a different kind of quiet" },
 ];
 ---
@@ -25,8 +25,8 @@ const STATS = [
 <PageHeader
   as="h2"
   eyebrow="About the ranch"
-  title="A working ranch.<br /> A patient kind of recovery."
-  intro="Skyland Ranch has been a quiet, honest home for men in recovery since 1986 — shaped by the land, by horses, and by the men who chose to begin again here."
+  title="A working ranch.<br /> A steady place to live sober."
+  intro="Skyland Ranch has been a quiet, honest home for men building sobriety since 1986 — shaped by the land, by horses, and by the men who chose to begin again here."
   image={barnImg}
   imageAlt="A weathered barn at dawn on the ranch"
   light
@@ -40,25 +40,25 @@ const STATS = [
     <div class="reveal md:col-span-5">
       <div class="eyebrow text-moss">Our mission</div>
       <h3 class="mt-4 font-display text-4xl md:text-5xl leading-[1.05] text-balance">
-        Male drug and alcohol addiction recovery — with dignity.
+        Long-term sober living for men — with dignity.
       </h3>
     </div>
     <div class="reveal md:col-span-7 space-y-6 text-lg text-foreground/80 text-pretty" style="--reveal-delay:150ms">
       <p>
         At Skyland Ranch, we take great care to foster an atmosphere of mutual respect and honesty.
-        Over the past {SITE.yearsOfService} years the ranch has helped hundreds of men overcome drug,
-        alcohol, and other addiction issues.
+        Over the past {SITE.yearsOfService} years the ranch has welcomed hundreds of men seeking a
+        stable, drug- and alcohol-free place to rebuild daily life.
       </p>
       <p>
-        We are a small, intentional community — not a clinical facility, and not a treatment center in
-        the conventional sense. We are a working horse ranch where sobriety is practiced one quiet day
-        at a time, supported by structure, by chores, by horses, and by the company of other men who
-        understand.
+        We are a small, intentional community, not a medical or clinical provider. We do not provide
+        detox, diagnosis, counseling, therapy, or behavioral health treatment on site. We are a working
+        horse ranch where sobriety is practiced one quiet day at a time, supported by structure, by
+        chores, by horses, and by the company of other men who understand.
       </p>
       <div class="hairline"></div>
       <p class="text-base text-muted-foreground">
-        Many residents arrive after multiple short-term programs. The ranch's pace — slow, steady, and
-        grounded in real work — is often what allows recovery to finally take.
+        Many residents arrive after short-term programs or other life transitions. The ranch's pace —
+        slow, steady, and grounded in real work — gives sobriety room to become ordinary daily life.
       </p>
     </div>
   </div>
@@ -76,19 +76,19 @@ const STATS = [
         <p>
           Skyland Ranch was founded by Mr. Pitkin — known to every resident simply as
           <strong>“Pa.”</strong> Formerly an attorney and judge in San Diego, he left the bench and
-          moved to the Pacific Northwest with a single conviction: that men battling addiction could
-          heal through honest work and the steady company of horses.
+          moved to the Pacific Northwest with a single conviction: that men trying to live sober needed
+          time, honest work, and the steady company of horses.
         </p>
         <p>
-          From that idea grew a horse-driven 12-step program built on mutual respect, honesty, and the
-          one thing no treatment center can rush — time. It was never meant to be a clinical facility.
-          It was meant to be a home, and a working ranch, where recovery is something you live rather
+          From that idea grew a horse-centered sober living community built on mutual respect, honesty,
+          and the one thing no quick fix can rush — time. It was never meant to be a clinical facility.
+          It was meant to be a home, and a working ranch, where sobriety is something you live rather
           than something you complete.
         </p>
         <p>
           What Pa built has held: a community of men who understand one another, doing real work side
           by side, holding each other to honesty. That purpose still guides the ranch today — to offer
-          this recovery to men and families of all walks of life.
+          this sober living home to men and families of all walks of life.
         </p>
       </div>
     </div>
@@ -127,8 +127,8 @@ const STATS = [
         <div class="absolute inset-0 bg-gradient-to-t from-forest/85 via-forest/25 to-transparent"></div>
         <div class="relative p-10 md:p-12 text-mist">
           <blockquote class="font-display text-3xl md:text-4xl leading-[1.15] font-light text-balance">
-            “When people learn more about themselves through equine therapy, that learning changes their
-            lives.”
+            “When people learn more about themselves through working with horses, that learning changes
+            their lives.”
           </blockquote>
           <div class="mt-6 eyebrow text-sage">— KC Letterman</div>
         </div>
@@ -136,19 +136,19 @@ const STATS = [
     </div>
     <div class="reveal md:col-span-6">
       <h3 class="font-display text-4xl md:text-5xl leading-[1.05] text-balance">KC Letterman</h3>
-      <p class="mt-3 eyebrow text-moss">Certified equine therapist · EMT &amp; firefighter</p>
+      <p class="mt-3 eyebrow text-moss">Horseman · EMT &amp; firefighter</p>
       <div class="mt-6 space-y-5 text-lg text-foreground/80 text-pretty">
         <p>
-          “Certified as an equine therapist, having worked as an Emergency Medical Technician and
-          firefighter, and enjoying being an outdoor enthusiast and natural people leader, I’ve always
-          been driven to help others find better ways of living. Since my early days, I’ve turned this
-          defense mechanism into a collaborative skill.
+          “Having worked as an Emergency Medical Technician and firefighter, and enjoying being an
+          outdoor enthusiast and natural people leader, I’ve always been driven to help others find
+          better ways of living. Since my early days, I’ve turned this defense mechanism into a
+          collaborative skill.
         </p>
         <p>
           I’ve also had incredible opportunities in the horse world that have expanded my knowledge.
           While many people stay at the hobby level, I’ve always been drawn to the positive impact that
-          can happen at the ranch. When people learn more about themselves through equine therapy, that
-          learning changes their lives — and the lives of their families and the people close to them.
+          can happen at the ranch. When people learn more about themselves through working with horses,
+          that learning changes their lives — and the lives of their families and the people close to them.
         </p>
         <p>
           When I mix all my strengths together in this special place, Skyland Ranch, the result is that

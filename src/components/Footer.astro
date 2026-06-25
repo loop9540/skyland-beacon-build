@@ -1,5 +1,6 @@
 ---
-import { Phone, Mail, MapPin } from "@lucide/astro";
+import { Mail, MapPin, Phone } from "lucide";
+import LucideIcon from "@/components/LucideIcon.astro";
 import { NAV, SITE, url, sectionHref } from "../lib/site";
 const year = new Date().getFullYear();
 ---
@@ -20,20 +21,20 @@ const year = new Date().getFullYear();
           href={SITE.phoneHref}
           class="mt-8 inline-flex items-center gap-3 rounded-full bg-dawn text-accent-foreground px-6 py-3 text-base font-medium hover:-translate-y-px transition-transform"
         >
-          <Phone class="h-4 w-4" /> Call {SITE.phone}
+          <LucideIcon icon={Phone} class="h-4 w-4" /> Call {SITE.phone}
         </a>
       </div>
 
       <div class="md:col-span-3">
         <div class="eyebrow text-sage/70">Visit</div>
         <ul class="mt-4 space-y-3 text-sage/90 text-sm">
-          <li class="flex gap-3"><MapPin class="h-4 w-4 mt-0.5 shrink-0" /> {SITE.location}</li>
+          <li class="flex gap-3"><LucideIcon icon={MapPin} class="h-4 w-4 mt-0.5 shrink-0" /> {SITE.location}</li>
           <li class="flex gap-3">
-            <Phone class="h-4 w-4 mt-0.5 shrink-0" />
+            <LucideIcon icon={Phone} class="h-4 w-4 mt-0.5 shrink-0" />
             <a href={SITE.phoneHref} class="hover:text-mist transition-colors">{SITE.phone}</a>
           </li>
           <li class="flex gap-3">
-            <Mail class="h-4 w-4 mt-0.5 shrink-0" />
+            <LucideIcon icon={Mail} class="h-4 w-4 mt-0.5 shrink-0" />
             <a href={`mailto:${SITE.email}`} class="hover:text-mist transition-colors break-all">{SITE.email}</a>
           </li>
         </ul>
