@@ -1,12 +1,13 @@
 ---
-import { Phone, Mail, MapPin, Clock } from "@lucide/astro";
+import { Clock, Mail, MapPin, Phone } from "lucide";
+import LucideIcon from "@/components/LucideIcon.astro";
 import { SITE } from "../../lib/site";
 
 const rows = [
-  { Icon: Phone, label: "Phone", value: SITE.phone, href: SITE.phoneHref },
-  { Icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
-  { Icon: MapPin, label: "Location", value: SITE.location, href: null },
-  { Icon: Clock, label: "Hours", value: "Calls answered daily", href: null },
+  { icon: Phone, label: "Phone", value: SITE.phone, href: SITE.phoneHref },
+  { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
+  { icon: MapPin, label: "Location", value: SITE.location, href: null },
+  { icon: Clock, label: "Hours", value: "Calls answered daily", href: null },
 ];
 ---
 
@@ -38,10 +39,10 @@ const rows = [
             href={SITE.phoneHref}
             class="mt-8 inline-flex items-center gap-3 rounded-full bg-mist text-forest px-7 py-4 text-lg font-medium hover:-translate-y-0.5 transition-transform"
           >
-            <Phone class="h-5 w-5" /> {SITE.phone}
+            <LucideIcon icon={Phone} class="h-5 w-5" /> {SITE.phone}
           </a>
           <p class="mt-6 text-mist/85 text-pretty">
-            Calls are confidential. We listen first, then answer questions. There is never any pressure.
+            Calls are private. We listen first, then answer questions. There is never any pressure.
           </p>
         </div>
       </div>
@@ -55,7 +56,7 @@ const rows = [
                 const inner = (
                   <div class="flex items-start gap-4">
                     <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-forest/10 text-forest">
-                      <r.Icon class="h-4 w-4" />
+                      <LucideIcon icon={r.icon} class="h-4 w-4" />
                     </div>
                     <div>
                       <div class="text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">

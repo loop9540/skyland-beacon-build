@@ -30,7 +30,7 @@ export const NAV: NavItem[] = [
   { id: "program", label: "The Program" },
   { id: "residence", label: "Residence" },
   { id: "admissions", label: "Admissions" },
-  { id: "referrals", label: "Referrals" },
+  { id: "referrals", label: "Inquiries" },
   { id: "contact", label: "Contact" },
 ];
 

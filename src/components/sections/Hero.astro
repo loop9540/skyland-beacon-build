@@ -1,6 +1,7 @@
 ---
 import { getImage } from "astro:assets";
-import { ArrowRight, Phone, Play, X } from "@lucide/astro";
+import { ArrowRight, Phone, Play, X } from "lucide";
+import LucideIcon from "@/components/LucideIcon.astro";
 import { SITE, url, sectionHref } from "../../lib/site";
 import heroPosterSrc from "../../assets/hero-ranch.jpg";
 
@@ -40,17 +41,18 @@ const embedSrc = SITE.filmEmbed;
           and a quiet place<br />to begin again.
         </h1>
         <p class="mt-7 max-w-xl text-lg text-mist/90 text-pretty">
-          A working horse ranch in the Cascade foothills, 45 minutes from Seattle, where men recover
-          their footing through honest work, mutual respect, and the steady company of horses.
+          A working horse ranch in the Cascade foothills, 45 minutes from Seattle, where men rebuild
+          sober daily life through honest work, mutual respect, and the steady company of horses.
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
           <a
             href={SITE.phoneHref}
             class="group inline-flex items-center gap-3 rounded-full bg-dawn text-accent-foreground px-7 py-4 text-base font-medium shadow-lift hover:-translate-y-0.5 transition-transform"
           >
-            <Phone class="h-4 w-4" />
+            <LucideIcon icon={Phone} class="h-4 w-4" />
             Call {SITE.phone}
-            <ArrowRight
+            <LucideIcon
+              icon={ArrowRight}
               class="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0"
             />
           </a>
@@ -83,7 +85,7 @@ const embedSrc = SITE.filmEmbed;
           <span
             class="flex h-14 w-14 items-center justify-center rounded-full bg-mist/95 text-forest shadow-lift group-hover:scale-110 transition-transform"
           >
-            <Play class="h-6 w-6 fill-current ml-1" />
+            <LucideIcon icon={Play} class="h-6 w-6 fill-current ml-1" />
           </span>
           <span class="text-mist font-medium drop-shadow-md">Watch the film</span>
         </div>
@@ -111,7 +113,7 @@ const embedSrc = SITE.filmEmbed;
     aria-label="Close video"
     class="absolute top-5 right-5 md:top-8 md:right-8 flex h-11 w-11 items-center justify-center rounded-full bg-mist/10 border border-mist/30 text-mist hover:bg-mist/20 transition-colors"
   >
-    <X class="h-5 w-5" />
+    <LucideIcon icon={X} class="h-5 w-5" />
   </button>
   <div class="absolute inset-0" data-close aria-hidden="true"></div>
   <div

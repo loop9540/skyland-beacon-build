@@ -40,7 +40,7 @@ Everything is plain code — edit and rebuild:
 - **Images**: `src/assets/` (optimized at build) and `public/media/` (video, OG image)
 - **Design tokens / colors**: `src/styles/global.css`
 
-There is no form and no database. The referral and contact flows are a phone number and an email address by design.
+There is no form and no database. The inquiry and contact flows are a phone number and an email address by design.
 
 ## Deploy (Vercel)
 

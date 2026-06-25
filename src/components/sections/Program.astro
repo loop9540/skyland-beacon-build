@@ -2,26 +2,27 @@
 import { Image } from "astro:assets";
 import PageHeader from "../PageHeader.astro";
 import { sectionHref } from "../../lib/site";
-import { Sunrise, Hammer, Users, Leaf, Moon } from "@lucide/astro";
+import { Hammer, Leaf, Moon, Sunrise, Users } from "lucide";
+import LucideIcon from "@/components/LucideIcon.astro";
 import equineImg from "../../assets/equine-saddle.png";
 import leviImg from "../../assets/levi-horse.jpg";
 import arenaImg from "../../assets/horseback-arena-v2.jpg";
 
 const DAY = [
-  { Icon: Sunrise, when: "Dawn", title: "Morning chores", body: "The day begins early. Feed the horses, check the pasture, take in the quiet before the world wakes." },
-  { Icon: Users, when: "Mid-morning", title: "Community", body: "Meals together, check-ins, and the simple accountability of being part of something working." },
-  { Icon: Hammer, when: "Day", title: "Honest work", body: "Real chores on a real ranch. The kind of work that returns a man to his hands and out of his head." },
-  { Icon: Leaf, when: "Afternoon", title: "Equine time", body: "Grooming, groundwork, and time with the horses — the heart of what changes here." },
-  { Icon: Moon, when: "Evening", title: "Rest & reflection", body: "A quiet evening, the kind sobriety needs. Rest as a discipline. Reflection as a practice." },
-  { Icon: Sunrise, when: "Every day", title: "Drug & alcohol-free", body: "An absolute, unwavering sober environment. The single most important condition for what happens here." },
+  { icon: Sunrise, when: "Dawn", title: "Morning chores", body: "The day begins early. Feed the horses, check the pasture, take in the quiet before the world wakes." },
+  { icon: Users, when: "Mid-morning", title: "Community", body: "Meals together, check-ins, and the simple accountability of being part of something working." },
+  { icon: Hammer, when: "Day", title: "Honest work", body: "Real chores on a real ranch. The kind of work that returns a man to his hands and out of his head." },
+  { icon: Leaf, when: "Afternoon", title: "Equine time", body: "Grooming, groundwork, and time with the horses — the heart of what changes here." },
+  { icon: Moon, when: "Evening", title: "Rest & reflection", body: "A quiet evening, the kind sobriety needs. Rest as a discipline. Reflection as a practice." },
+  { icon: Sunrise, when: "Every day", title: "Drug & alcohol-free", body: "An absolute, unwavering sober environment. The single most important condition for what happens here." },
 ];
 ---
 
 <PageHeader
   as="h2"
   eyebrow="The program"
-  title="A day on the ranch.<br /> A life in recovery."
-  intro="Recovery here is built into the texture of an ordinary day — feeding horses at dawn, working the land, sharing a meal, walking the trails. The program is the rhythm of the place itself."
+  title="A day on the ranch.<br /> A life built sober."
+  intro="Sobriety here is built into the texture of an ordinary day — feeding horses at dawn, working the land, sharing a meal, walking the trails. The program is the rhythm of the place itself."
   image={equineImg}
   imageAlt="Hands gently brushing a horse's mane in soft natural light"
   light
@@ -44,7 +45,7 @@ const DAY = [
             class="reveal group h-full rounded-2xl bg-card p-8 border border-border/60 shadow-soft hover:shadow-lift transition-all hover:-translate-y-0.5"
             style={`--reveal-delay:${i * 90}ms`}
           >
-            <d.Icon class="h-7 w-7 text-moss" />
+            <LucideIcon icon={d.icon} class="h-7 w-7 text-moss" />
             <div class="mt-5 eyebrow text-foreground/50">{d.when}</div>
             <h4 class="mt-2 font-display text-2xl text-foreground">{d.title}</h4>
             <p class="mt-3 text-foreground/70 text-pretty">{d.body}</p>
@@ -70,18 +71,18 @@ const DAY = [
       </div>
     </div>
     <div class="reveal md:col-span-6" style="--reveal-delay:150ms">
-      <div class="eyebrow text-sage">Equine therapy</div>
+      <div class="eyebrow text-sage">Horses & ranch life</div>
       <h3 class="mt-4 font-display text-4xl md:text-5xl leading-tight text-balance font-light">
         A horse can't be lied to.
       </h3>
       <div class="mt-6 space-y-5 text-mist/85 text-lg text-pretty">
         <p>
           A horse responds to who you are, right now — your breath, your posture, your honesty. Working
-          with horses asks a man to show up the way recovery asks him to show up.
+          with horses asks a man to show up the way sober living asks him to show up.
         </p>
         <p>
-          Many of our residents who had been through treatment many times before describe their time
-          with the horses as the moment something finally moved inside them.
+          Many residents describe their time with the horses as the moment daily life began to feel
+          grounded again.
         </p>
       </div>
     </div>
@@ -110,8 +111,8 @@ const DAY = [
         <div class="rounded-2xl border border-moss/30 bg-forest text-mist p-8 h-full">
           <div class="font-display text-2xl text-dawn">Long term</div>
           <p class="mt-3 text-mist/85 text-pretty">
-            For men who've been to treatment before. The deeper, slower work of building a life that
-            holds — sometimes a year or more. Often what finally works.
+            For men who need more than a brief reset. The deeper, slower work of building a life that
+            holds — sometimes a year or more.
           </p>
         </div>
       </div>

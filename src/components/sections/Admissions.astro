@@ -1,7 +1,8 @@
 ---
 import PageHeader from "../PageHeader.astro";
 import { SITE, sectionHref } from "../../lib/site";
-import { ArrowRight, Check, Play, MapPin } from "@lucide/astro";
+import { ArrowRight, Check, MapPin, Play } from "lucide";
+import LucideIcon from "@/components/LucideIcon.astro";
 import valleyImg from "../../assets/admissions-valley.jpg";
 
 const STEPS = [
@@ -12,10 +13,10 @@ const STEPS = [
 
 const FITS = [
   "Wants a drug and alcohol-free environment to live in, short or long term.",
-  "Has tried other treatment and is looking for something with more time and more ground beneath it.",
-  "Is open to honest work, ranch life, and being part of a community of men in recovery.",
-  "Arrives with a dual diagnosis — substance use alongside depression, anxiety, or trauma — and is open to community-based support with clinical connections.",
-  "Is medically and physically able to participate in ranch chores and daily life.",
+  "Is ready for sober living and looking for more time and more ground beneath it.",
+  "Is open to honest work, ranch life, and being part of a community of sober men.",
+  "May already be working with outside medical or counseling providers and wants a stable home base while continuing that care.",
+  "Is stable and physically able to participate in ranch chores and daily life.",
 ];
 ---
 
@@ -23,7 +24,7 @@ const FITS = [
   as="h2"
   eyebrow="Admissions"
   title="The first call<br /> is the hardest one."
-  intro="There's no form to fill out before you can talk to a real person. Pick up the phone, and we'll walk through it together — honestly, confidentially, with no pressure."
+  intro="There's no form to fill out before you can talk to a real person. Pick up the phone, and we'll walk through whether the ranch is the right sober living fit — honestly, privately, with no pressure."
   image={valleyImg}
   imageAlt="A green pasture at the ranch with the Cascade foothills rising behind"
   light
@@ -72,10 +73,10 @@ const FITS = [
         data-embed={SITE.filmEmbed}
         class="mt-8 inline-flex items-center gap-3 rounded-full bg-dawn text-accent-foreground px-7 py-4 text-base font-medium shadow-lift hover:-translate-y-0.5 transition-transform"
       >
-        <Play class="h-5 w-5 fill-current" /> Watch the film
+        <LucideIcon icon={Play} class="h-5 w-5 fill-current" /> Watch the film
       </button>
       <p class="mt-5 inline-flex items-center gap-2 text-sm text-mist/70">
-        <MapPin class="h-4 w-4" /> {SITE.location}
+        <LucideIcon icon={MapPin} class="h-4 w-4" /> {SITE.location}
       </p>
     </div>
     <div class="reveal" style="--reveal-delay:150ms">
@@ -96,7 +97,7 @@ const FITS = [
         />
         <span class="absolute inset-0 flex items-center justify-center bg-forest/25 group-hover:bg-forest/35 transition-colors">
           <span class="flex h-16 w-16 items-center justify-center rounded-full bg-mist/95 text-forest shadow-lift group-hover:scale-110 transition-transform">
-            <Play class="h-7 w-7 fill-current ml-1" />
+            <LucideIcon icon={Play} class="h-7 w-7 fill-current ml-1" />
           </span>
         </span>
       </button>
@@ -112,9 +113,9 @@ const FITS = [
         The ranch is a good fit for a man who:
       </h3>
       <p class="mt-5 text-foreground/70 text-pretty">
-        Many of the men who come to us arrive with a dual diagnosis — addiction alongside depression,
-        anxiety, or trauma. The ranch supports them through community, structure, and our connections
-        to local clinical care.
+        Many of the men who come to us are continuing work they began elsewhere. The ranch supports
+        sober living through community, structure, and help staying connected with outside licensed
+        medical, counseling, or behavioral health providers when needed.
       </p>
     </div>
     <div class="reveal" style="--reveal-delay:100ms">
@@ -123,7 +124,7 @@ const FITS = [
           FITS.map((f) => (
             <li class="flex gap-4">
               <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-forest text-mist">
-                <Check class="h-3.5 w-3.5" />
+                <LucideIcon icon={Check} class="h-3.5 w-3.5" />
               </div>
               <span class="text-foreground/80 text-pretty">{f}</span>
             </li>
@@ -149,7 +150,7 @@ const FITS = [
         href={sectionHref("contact")}
         class="mt-8 inline-flex items-center gap-2 text-dawn border-b border-dawn/40 pb-1 hover:border-dawn transition-colors"
       >
-        Talk to us about fees <ArrowRight class="h-4 w-4" />
+        Talk to us about fees <LucideIcon icon={ArrowRight} class="h-4 w-4" />
       </a>
     </div>
   </div>
@@ -163,13 +164,13 @@ const FITS = [
         Make the call.<br />We'll take it from there.
       </h3>
       <p class="mt-6 text-foreground/70 text-pretty">
-        Calls are confidential, and there's no obligation. When you're ready, here's how to reach us.
+        Calls are private, and there's no obligation. When you're ready, here's how to reach us.
       </p>
       <a
         href={sectionHref("contact")}
         class="mt-8 inline-flex items-center gap-2 text-forest border-b border-forest/40 pb-1 hover:border-forest transition-colors"
       >
-        Get in touch <ArrowRight class="h-4 w-4" />
+        Get in touch <LucideIcon icon={ArrowRight} class="h-4 w-4" />
       </a>
     </div>
   </div>

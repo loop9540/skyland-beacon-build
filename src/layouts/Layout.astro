@@ -9,7 +9,7 @@ interface Props {
   description: string;
   /** Path of this page (e.g. "/" or "/referrals") for the canonical/og:url. */
   path?: string;
-  /** Render the LocalBusiness JSON-LD (home page only). */
+  /** Render the organization JSON-LD (home page only). */
   organizationSchema?: boolean;
 }
 
@@ -28,10 +28,10 @@ const ogImage = new URL(url("/media/og-image.jpg"), site).href;
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
+  "@type": "Organization",
   name: "Skyland Ranch",
   description:
-    "A drug and alcohol-free working horse ranch offering long-term sober living for men near Seattle, Washington.",
+    "A nonprofit working horse ranch offering long-term sober living for men near Seattle, Washington.",
   url: canonical,
   telephone: SITE.phoneHref.replace("tel:", ""),
   email: SITE.email,
@@ -49,7 +49,7 @@ const jsonLd = {
     name: "Mr. Pitkin",
     alternateName: "Pa",
     description:
-      "A former San Diego attorney and judge who founded Skyland Ranch to help men recover from addiction through ranch work and the company of horses.",
+      "A former San Diego attorney and judge who founded Skyland Ranch to offer men a sober living home shaped by ranch work, community, and the company of horses.",
   },
   areaServed: "Seattle, WA",
 };

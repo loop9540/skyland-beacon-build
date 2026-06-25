@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import { Menu, Phone } from "@lucide/astro";
+import { Menu, Phone } from "lucide";
+import LucideIcon from "@/components/LucideIcon.astro";
 import { NAV, SITE, url, sectionHref } from "../lib/site";
 import logo from "../assets/skyland-logo.png";
 ---
@@ -10,7 +11,7 @@ import logo from "../assets/skyland-logo.png";
     <a href={url("/")} class="group flex items-center" aria-label="Skyland Ranch home">
       <Image
         src={logo}
-        alt="Skyland Ranch — men's drug and alcohol therapeutic residence program"
+        alt="Skyland Ranch — men's sober living residence on a working horse ranch"
         class="h-16 md:h-20 w-auto transition-transform duration-500 group-hover:-translate-y-0.5"
         widths={[200, 300, 400]}
         sizes="160px"
@@ -46,7 +47,7 @@ import logo from "../assets/skyland-logo.png";
         href={SITE.phoneHref}
         class="inline-flex items-center gap-2 rounded-full bg-forest text-primary-foreground pl-4 pr-5 py-2.5 text-sm font-medium shadow-soft hover:bg-moss transition-all hover:shadow-lift"
       >
-        <Phone class="h-4 w-4" />
+        <LucideIcon icon={Phone} class="h-4 w-4" />
         {SITE.phone}
       </a>
     </div>
@@ -59,7 +60,7 @@ import logo from "../assets/skyland-logo.png";
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <Menu id="menu-icon-open" class="h-6 w-6" />
+      <LucideIcon icon={Menu} id="menu-icon-open" class="h-6 w-6" />
     </button>
   </div>
 
@@ -92,7 +93,7 @@ import logo from "../assets/skyland-logo.png";
         href={SITE.phoneHref}
         class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-forest text-primary-foreground px-5 py-3 text-base font-medium"
       >
-        <Phone class="h-4 w-4" />
+        <LucideIcon icon={Phone} class="h-4 w-4" />
         Call {SITE.phone}
       </a>
     </div>
