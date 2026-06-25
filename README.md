@@ -2,7 +2,7 @@
 
 Single-page marketing site for Skyland Ranch — long-term sober living for men near Seattle, WA.
 
-Built for speed and simplicity: **Astro** static output, **zero JavaScript framework**, no database, no server, no third-party services. Deploys to **Vercel**.
+Built for speed and simplicity: **Astro** static output, **zero JavaScript framework**, no database, and no server. Production is published with **GitHub Pages** on the custom domain `skylandranch.org`; `vercel.json` remains available for Vercel-compatible static deployments.
 
 ## Stack
 
@@ -14,9 +14,11 @@ Built for speed and simplicity: **Astro** static output, **zero JavaScript frame
 | Fonts          | Self-hosted via `@fontsource-variable` (Sora, Manrope) |
 | Images         | `astro:assets` — auto WebP, responsive, lazy        |
 | Interactivity  | ~2.5 KB of hand-written vanilla JS (`src/scripts/site.ts`) |
-| Hosting        | Vercel (static output, auto-deploy on push)         |
+| Hosting        | GitHub Pages (static output); Vercel config retained |
 
 No React, no `framer-motion`, no Supabase. The whole client ships a single small inlined script for scroll reveals, the mobile menu, scroll-spy, and the video lightbox.
+
+The live page does use YouTube as a third-party media provider for video thumbnails and the lazily loaded video iframe. The security header allowlist covers the current `www.youtube.com` embed path and the privacy-enhanced `www.youtube-nocookie.com` embed host.
 
 ## Single page
 
@@ -42,9 +44,21 @@ Everything is plain code — edit and rebuild:
 
 There is no form and no database. The inquiry and contact flows are a phone number and an email address by design.
 
-## Deploy (Vercel)
+## Deploy
 
-Vercel auto-builds and deploys on every push to `main` (build config in `vercel.json`).
-Canonical URLs/sitemap use `site` in `astro.config.mjs` — set it to the production
-domain (currently `https://skylandranch.org`) and update the `Sitemap:` line in
-`public/robots.txt` if the domain changes.
+GitHub Pages builds the production site from `main` using the Pages workflow. Canonical URLs/sitemap use `site` in `astro.config.mjs` — set it to the production domain (currently `https://skylandranch.org`) and update the `Sitemap:` line in `public/robots.txt` if the domain changes.
+
+GitHub Pages must have HTTPS enforcement enabled in the repository Pages settings or through the GitHub API. The Pages API endpoint is:
+
+```bash
+gh api repos/loop9540/skyland-beacon-build/pages
+```
+
+Changing `https_enforced` requires repository administrator, maintainer, or "manage GitHub Pages settings" permission. A token that can push but lacks those permissions may still read the public Pages metadata while update requests return `404 Not Found`.
+
+GitHub Pages does not apply arbitrary custom response headers from the repository. The browser security policy is committed in portable static-host formats for deployments that support them:
+
+- `public/_headers` for hosts that honor the `_headers` convention.
+- `vercel.json` for Vercel deployments.
+
+Those header configs include Content Security Policy, HSTS, `X-Content-Type-Options`, Referrer Policy, Permissions Policy, and frame protection. When deployed only to GitHub Pages, verify HTTPS enforcement through the Pages API and check response headers at the edge instead of assuming these files are applied.
