@@ -10,12 +10,27 @@ function onReady(fn: () => void) {
 }
 
 onReady(() => {
+  initSkipLink();
   initReveal();
   initHeader();
   initMobileMenu();
   initScrollSpy();
   initVideoLightbox();
 });
+
+/* Skip link: move keyboard focus to the main landmark after the anchor jump. */
+function initSkipLink() {
+  const skipLink = document.querySelector<HTMLAnchorElement>(".skip-link[href^='#']");
+  if (!skipLink) return;
+
+  skipLink.addEventListener("click", () => {
+    const targetId = skipLink.hash.slice(1);
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (!target) return;
+
+    requestAnimationFrame(() => target.focus({ preventScroll: true }));
+  });
+}
 
 /* Scroll-reveal: fade/slide elements in once as they enter the viewport. */
 function initReveal() {
@@ -52,20 +67,32 @@ function initMobileMenu() {
   const btn = document.getElementById("menu-toggle");
   const panel = document.getElementById("mobile-menu");
   if (!btn || !panel) return;
-  const close = () => {
+
+  const setOpen = (open: boolean) => {
+    panel.hidden = !open;
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  };
+
+  const close = (restoreFocus = false) => {
     panel.hidden = true;
     btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-label", "Open menu");
+    if (restoreFocus) btn.focus();
   };
+
+  setOpen(false);
+
   btn.addEventListener("click", () => {
     const open = btn.getAttribute("aria-expanded") === "true";
-    if (open) {
-      close();
-    } else {
-      panel.hidden = false;
-      btn.setAttribute("aria-expanded", "true");
-    }
+    setOpen(!open);
   });
-  panel.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+  panel.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => close()));
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || btn.getAttribute("aria-expanded") !== "true") return;
+    e.preventDefault();
+    close(true);
+  });
 }
 
 /* Scroll-spy: mark the nav link for the section currently in view. */
@@ -98,33 +125,115 @@ function initVideoLightbox() {
   if (!modal || !triggers.length) return;
   const frameHost = modal.querySelector<HTMLElement>("[data-frame]");
   const closeEls = modal.querySelectorAll("[data-close]");
+  let activeTrigger: HTMLElement | null = null;
 
-  const open = (embed: string) => {
-    if (frameHost && embed) {
-      frameHost.innerHTML = "";
-      const iframe = document.createElement("iframe");
-      iframe.src = embed;
-      iframe.title = "Skyland Ranch — film";
-      iframe.allow =
-        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-      iframe.allowFullscreen = true;
-      iframe.className = "absolute inset-0 h-full w-full border-0";
-      frameHost.appendChild(iframe);
+  const focusableSelector = [
+    "button:not([disabled])",
+    "[href]",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    '[tabindex]:not([tabindex="-1"])',
+  ].join(",");
+
+  const getFocusable = () =>
+    Array.from(modal.querySelectorAll<HTMLElement>(focusableSelector)).filter(
+      (el) => !el.hidden && el.offsetParent !== null,
+    );
+
+  const allowedEmbedUrl = (embed: string) => {
+    try {
+      const candidate = new URL(embed, window.location.href);
+      const host = candidate.hostname.toLowerCase();
+      const allowedHosts = new Set([
+        "youtube.com",
+        "www.youtube.com",
+        "youtube-nocookie.com",
+        "www.youtube-nocookie.com",
+      ]);
+      const videoMatch = candidate.pathname.match(/^\/embed\/([A-Za-z0-9_-]{11})$/);
+
+      if (candidate.protocol !== "https:" || !allowedHosts.has(host) || !videoMatch) {
+        return null;
+      }
+
+      const safeUrl = new URL(`https://${host}/embed/${videoMatch[1]}`);
+      for (const param of ["autoplay", "rel", "start"]) {
+        const value = candidate.searchParams.get(param);
+        if (value !== null) safeUrl.searchParams.set(param, value);
+      }
+      return safeUrl.toString();
+    } catch {
+      return null;
     }
+  };
+
+  const open = (embed: string, trigger: HTMLElement) => {
+    const src = allowedEmbedUrl(embed);
+    if (!frameHost || !src) return;
+
+    activeTrigger = trigger;
+    frameHost.replaceChildren();
+    const iframe = document.createElement("iframe");
+    iframe.src = src;
+    iframe.title = "Skyland Ranch film";
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.tabIndex = -1;
+    iframe.className = "absolute inset-0 h-full w-full border-0";
+    frameHost.appendChild(iframe);
+
     modal.hidden = false;
     document.body.style.overflow = "hidden";
+    (getFocusable()[0] || modal).focus();
   };
+
   const close = () => {
+    if (modal.hidden) return;
     modal.hidden = true;
     document.body.style.overflow = "";
-    if (frameHost) frameHost.innerHTML = ""; // stop playback
+    if (frameHost) frameHost.replaceChildren(); // stop playback
+    const trigger = activeTrigger;
+    activeTrigger = null;
+    if (trigger?.isConnected) trigger.focus();
+  };
+
+  const trapFocus = (e: KeyboardEvent) => {
+    if (modal.hidden) return;
+
+    if (e.key === "Escape") {
+      e.preventDefault();
+      close();
+      return;
+    }
+
+    if (e.key !== "Tab") return;
+
+    const focusable = getFocusable();
+    if (!focusable.length) {
+      e.preventDefault();
+      modal.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+
+    if (e.shiftKey && (active === first || !modal.contains(active))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && active === last) {
+      e.preventDefault();
+      first.focus();
+    }
   };
 
   triggers.forEach((btn) =>
-    btn.addEventListener("click", () => open(btn.dataset.embed || "")),
+    btn.addEventListener("click", () => open(btn.dataset.embed || "", btn)),
   );
   closeEls.forEach((el) => el.addEventListener("click", close));
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hidden) close();
-  });
+  modal.addEventListener("keydown", trapFocus);
 }

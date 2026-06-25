@@ -192,6 +192,6 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .animate-drift, .animate-ken-burns { animation: none; }
+  .animate-drift, .animate-ken-burns, .animate-reveal { animation: none; }
 }
 .no-js .reveal { opacity: 1; transform: none; }
