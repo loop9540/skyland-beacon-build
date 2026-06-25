@@ -9,9 +9,13 @@ interface Props {
   intro?: string;
   image?: ImageMetadata;
   imageAlt?: string;
+  imageLoading?: "eager" | "lazy";
+  imageFetchPriority?: "high" | "low" | "auto";
   light?: boolean;
   bottomImage?: ImageMetadata;
   bottomImageAlt?: string;
+  bottomImageLoading?: "eager" | "lazy";
+  bottomImageFetchPriority?: "high" | "low" | "auto";
   /** Heading level. Folded one-page sections pass "h2" so the page keeps a single h1. */
   as?: "h1" | "h2";
 }
@@ -22,9 +26,13 @@ const {
   intro,
   image,
   imageAlt = "",
+  imageLoading = "lazy",
+  imageFetchPriority,
   light = false,
   bottomImage,
   bottomImageAlt = "",
+  bottomImageLoading = "lazy",
+  bottomImageFetchPriority,
   as = "h1",
 } = Astro.props;
 
@@ -39,7 +47,8 @@ const Heading = as;
           src={image}
           alt={imageAlt}
           class="h-full w-full object-cover animate-ken-burns"
-          loading="eager"
+          loading={imageLoading}
+          fetchpriority={imageFetchPriority}
           widths={[768, 1280, 1920]}
           sizes="100vw"
         />
@@ -79,7 +88,8 @@ const Heading = as;
             src={bottomImage}
             alt={bottomImageAlt}
             class="w-full h-full object-cover"
-            loading="eager"
+            loading={bottomImageLoading}
+            fetchpriority={bottomImageFetchPriority}
             widths={[768, 1280, 1600]}
             sizes="(min-width: 1280px) 1200px, 100vw"
           />
