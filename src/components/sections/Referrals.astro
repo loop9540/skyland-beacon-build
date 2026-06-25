@@ -1,7 +1,7 @@
 ---
 import { Check, Mail, Phone } from "lucide";
 import LucideIcon from "@/components/LucideIcon.astro";
-import { SITE } from "../../lib/site";
+import { SITE, url } from "../../lib/site";
 
 const offers = [
   "Men only, ages 18+, stable and ready for sober living",
@@ -54,9 +54,9 @@ const offers = [
           </h3>
           <p class="mt-4 text-foreground/75 text-pretty">
             We've kept this deliberately simple: no intake forms, no application portal. Call or email and
-            we'll talk through whether the ranch may be a fit. Please <strong>do not send medical or
-            treatment records</strong> by email — a short description of the housing need is enough, and
-            we'll follow up by phone.
+            we'll talk through whether the ranch may be a fit. Please <strong>do not send medical records,
+            treatment records, or PHI</strong> by email — a short description of the housing need is enough,
+            and we'll follow up by phone.
           </p>
 
           <div class="mt-8 space-y-4">
@@ -88,7 +88,10 @@ const offers = [
 
           <p class="mt-6 text-xs text-muted-foreground text-pretty">
             Calls are answered daily. Skyland Ranch is a sober living residence, not a detox, medical,
-            counseling, or behavioral health treatment provider.
+            counseling, or behavioral health treatment provider. Read our{" "}
+            <a href={url("/privacy")} class="text-forest underline underline-offset-4 hover:text-moss">
+              privacy and non-clinical notice
+            </a>.
           </p>
         </div>
       </div>

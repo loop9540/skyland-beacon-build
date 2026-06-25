@@ -27,7 +27,7 @@ export type NavItem =
 export const NAV: NavItem[] = [
   { id: "top", label: "Home" },
   { id: "about", label: "About" },
-  { id: "program", label: "The Program" },
+  { id: "program", label: "Daily Life" },
   { id: "residence", label: "Residence" },
   { id: "admissions", label: "Admissions" },
   { id: "referrals", label: "Inquiries" },

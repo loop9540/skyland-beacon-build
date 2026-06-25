@@ -55,6 +55,14 @@ const year = new Date().getFullYear();
               </li>
             ))
           }
+          <li>
+            <a
+              href={url("/privacy")}
+              class="text-sage hover:text-mist transition-colors"
+            >
+              Privacy notice
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -63,7 +71,7 @@ const year = new Date().getFullYear();
       class="mt-16 pt-8 border-t border-mist/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-sage"
     >
       <div>© {year} Skyland Ranch. All rights reserved.</div>
-      <div>A 501(c)(3) nonprofit · Sober living for men since {SITE.established}</div>
+      <div>A 501(c)(3) nonprofit · Sober living residence for men since {SITE.established}</div>
     </div>
   </div>
 </footer>
