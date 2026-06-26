@@ -15,9 +15,24 @@ export const SITE = {
     return new Date().getFullYear() - this.established;
   },
   get filmEmbed() {
-    return `https://www.youtube.com/embed/${this.youtubeId}?autoplay=1&rel=0`;
+    return `https://www.youtube-nocookie.com/embed/${this.youtubeId}?autoplay=1&rel=0`;
   },
 } as const;
+
+export const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "connect-src 'self'",
+  "font-src 'self'",
+  "form-action 'self'",
+  "frame-src https://www.youtube-nocookie.com",
+  "img-src 'self' data: blob: https://img.youtube.com",
+  "media-src 'self'",
+  "object-src 'none'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  "upgrade-insecure-requests",
+].join("; ");
 
 export type NavItem =
   | { id: string; label: string }

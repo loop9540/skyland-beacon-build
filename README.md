@@ -18,7 +18,7 @@ Built for speed and simplicity: **Astro** static output, **zero JavaScript frame
 
 No React, no `framer-motion`, no Supabase. The whole client ships a single small inlined script for scroll reveals, the mobile menu, scroll-spy, and the video lightbox.
 
-The live page does use YouTube as a third-party media provider for video thumbnails and the lazily loaded video iframe. The security header allowlist covers the current `www.youtube.com` embed path and the privacy-enhanced `www.youtube-nocookie.com` embed host.
+The live page does use YouTube as a third-party media provider for video thumbnails and the lazily loaded video iframe. The iframe uses the privacy-enhanced `www.youtube-nocookie.com` embed host.
 
 ## Single page
 
@@ -56,7 +56,9 @@ gh api repos/loop9540/skyland-beacon-build/pages
 
 Changing `https_enforced` requires repository administrator, maintainer, or "manage GitHub Pages settings" permission. A token that can push but lacks those permissions may still read the public Pages metadata while update requests return `404 Not Found`.
 
-GitHub Pages does not apply arbitrary custom response headers from the repository. The browser security policy is committed in portable static-host formats for deployments that support them:
+GitHub Pages does not apply arbitrary custom response headers from the repository. The strongest repository-owned browser security policy GitHub Pages will serve is the CSP meta tag rendered by `src/layouts/Layout.astro`. Response headers such as HSTS, HTTP redirect behavior, `X-Frame-Options`, and CSP `frame-ancestors` still require platform or edge configuration outside this repository.
+
+Additional browser security policy is committed in portable static-host formats for deployments that support response headers:
 
 - `public/_headers` for hosts that honor the `_headers` convention.
 - `vercel.json` for Vercel deployments.
