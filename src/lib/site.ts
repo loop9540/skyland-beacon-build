@@ -1,6 +1,3 @@
-// Single source of truth for site-wide content and navigation.
-// No database, no CMS — edit values here and rebuild.
-
 export const SITE = {
   name: "Skyland Ranch",
   tagline: "There is hope.",
@@ -19,6 +16,8 @@ export const SITE = {
   },
 } as const;
 
+export const SITE_URL = "https://skylandranch.org";
+
 export const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -34,11 +33,8 @@ export const CONTENT_SECURITY_POLICY = [
   "upgrade-insecure-requests",
 ].join("; ");
 
-export type NavItem =
-  | { id: string; label: string }
-  | { href: string; label: string };
+export type NavItem = { id: string; label: string } | { href: string; label: string };
 
-// Items with `id` scroll to an on-page section; items with `href` are real pages.
 export const NAV: NavItem[] = [
   { id: "top", label: "Home" },
   { id: "about", label: "About" },
@@ -49,14 +45,27 @@ export const NAV: NavItem[] = [
   { id: "contact", label: "Contact" },
 ];
 
-/** Prefix an internal path with the configured base so links work under /<repo>/ on GitHub Pages. */
+export const SECTION_IDS = [
+  "top",
+  "about",
+  "program",
+  "residence",
+  "admissions",
+  "referrals",
+  "contact",
+] as const;
+
 export function url(path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-  if (!path.startsWith("/")) path = "/" + path;
-  return base + path;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalized}`;
 }
 
-/** Href for an in-page section anchor (works from any page — falls back to home + hash). */
 export function sectionHref(id: string): string {
   return id === "top" ? url("/") : `${url("/")}#${id}`;
+}
+
+export function canonicalUrl(path = "/"): string {
+  const normalized = path.endsWith("/") ? path : `${path}/`;
+  return new URL(url(normalized), SITE_URL).href;
 }
